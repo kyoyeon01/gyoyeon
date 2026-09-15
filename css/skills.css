@@ -1,0 +1,137 @@
+.skills {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 112px;
+  background: #f4f1e8;
+}
+
+.skills-marquee {
+  width: 100%;
+  overflow: hidden;
+}
+
+.skills-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: skillsMarquee 80s linear infinite;
+}
+
+.skills-group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: clamp(48px, 5.5vw, 72px);
+  padding-inline-end: clamp(48px, 5.5vw, 72px);
+}
+
+.skills-item {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 68px;
+  user-select: none;
+}
+
+.skills-item img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 58px;
+  object-fit: contain;
+}
+
+@keyframes skillsMarquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@media (max-width: 1199px) {
+  .skills {
+    height: 100px;
+  }
+
+  .skills-item {
+    width: 72px;
+    height: 62px;
+  }
+
+  .skills-item img {
+    max-height: 52px;
+  }
+
+  .skills-group {
+    gap: clamp(40px, 5.5vw, 60px);
+    padding-inline-end: clamp(40px, 5.5vw, 60px);
+  }
+
+  .skills-track {
+    animation-duration: 72s;
+  }
+}
+
+@media (max-width: 767px) {
+  .skills {
+    height: 88px;
+  }
+
+  .skills-item {
+    width: 64px;
+    height: 54px;
+  }
+
+  .skills-item img {
+    max-height: 46px;
+  }
+
+  .skills-group {
+    gap: clamp(32px, 8vw, 48px);
+    padding-inline-end: clamp(32px, 8vw, 48px);
+  }
+
+  .skills-track {
+    animation-duration: 64s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skills {
+    height: auto;
+    padding: 40px 24px;
+  }
+
+  .skills-marquee {
+    overflow: visible;
+  }
+
+  .skills-track {
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+    animation: none;
+    will-change: auto;
+    transform: none;
+    row-gap: 28px;
+  }
+
+  .skills-group {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-inline-end: 0;
+    gap: clamp(28px, 5vw, 56px);
+  }
+
+  .skills-group[aria-hidden="true"] {
+    display: none;
+  }
+}

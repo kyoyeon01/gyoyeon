@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>교 · Portfolio</title>
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/hero.css" />
+    <link rel="stylesheet" href="./css/about.css" />
+    <link rel="stylesheet" href="./css/skills.css" />
+    <link rel="stylesheet" href="./css/gallery.css" />
+    <link rel="stylesheet" href="./css/contact.css" />
+    <link rel="stylesheet" href="./css/footer.css" />
+  </head>
+  <body>
+    <main>
+      <section id="hero" class="hero" aria-label="히어로">
+        <header class="hero-header">
+          <a class="hero-logo" href="#hero" aria-label="홈">
+            <img src="./assets/images/logo_black.svg" alt="" />
+          </a>
+
+          <nav class="hero-nav" aria-label="주요 메뉴">
+            <a href="#about">ABOUT ME</a>
+            <a href="#portfolio">PORTFOLIO</a>
+            <a href="#contact">CONTACT</a>
+          </nav>
+
+          <button
+            class="hero-menu-toggle"
+            type="button"
+            aria-label="메뉴 열기"
+            aria-expanded="false"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <div class="hero-menu-panel" hidden>
+            <a href="#about">ABOUT ME</a>
+            <a href="#portfolio">PORTFOLIO</a>
+            <a href="#contact">CONTACT</a>
+          </div>
+        </header>
+
+        <div class="hero-stage">
+          <div class="hero-asset hero-sketchbook" data-asset="sketchbook">
+            <div class="hero-asset-parallax" data-depth="0.12">
+              <div class="hero-asset-float">
+                <img src="./assets/images/sketch.png" alt="" draggable="false" />
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-asset hero-sticker-clover" data-asset="clover">
+            <div class="hero-asset-parallax" data-depth="0.45">
+              <div class="hero-asset-float">
+                <img src="./assets/images/clover.svg" alt="" draggable="false" />
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-asset hero-sticker-loading" data-asset="loading">
+            <div class="hero-asset-parallax" data-depth="0.8">
+              <div class="hero-asset-float">
+                <img src="./assets/images/loading.svg" alt="" draggable="false" />
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-asset hero-sticker-red" data-asset="red">
+            <div class="hero-asset-parallax" data-depth="-0.4">
+              <div class="hero-asset-float">
+                <img src="./assets/images/designer.svg" alt="" draggable="false" />
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-asset hero-sticker-yellow" data-asset="yellow">
+            <div class="hero-asset-parallax" data-depth="0.55">
+              <div class="hero-asset-float">
+                <img src="./assets/images/cat.svg" alt="" draggable="false" />
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-asset hero-sticker-heart" data-asset="heart">
+            <div class="hero-asset-parallax" data-depth="0.7">
+              <div class="hero-asset-float">
+                <img src="./assets/images/heart.svg" alt="" draggable="false" />
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-asset hero-sticker-target" data-asset="target">
+            <div class="hero-asset-parallax" data-depth="0.3">
+              <div class="hero-asset-float">
+                <img src="./assets/images/point.svg" alt="" draggable="false" />
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-asset hero-sticker-blue" data-asset="blue">
+            <div class="hero-asset-parallax" data-depth="-0.25">
+              <div class="hero-asset-float">
+                <img src="./assets/images/way.svg" alt="" draggable="false" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="about" aria-label="소개">
+        <div class="about-card-stack">
+          <button
+            class="about-card about-card-yellow is-active"
+            type="button"
+            data-card="yellow"
+            aria-pressed="true"
+            aria-label="Yellow 카드"
+          >
+            <span class="about-card__hover">
+              <img
+                src="./assets/images/cardyellow.png"
+                alt="About me yellow card"
+                width="1600"
+                height="806"
+                loading="lazy"
+                decoding="async"
+                draggable="false"
+              />
+            </span>
+          </button>
+
+          <button
+            class="about-card about-card-pink is-left"
+            type="button"
+            data-card="pink"
+            aria-pressed="false"
+            aria-label="Pink 카드"
+          >
+            <span class="about-card__hover">
+              <img
+                src="./assets/images/cardpink.png"
+                alt="About me pink card"
+                width="1600"
+                height="806"
+                loading="lazy"
+                decoding="async"
+                draggable="false"
+              />
+            </span>
+          </button>
+
+          <button
+            class="about-card about-card-blue is-right"
+            type="button"
+            data-card="blue"
+            aria-pressed="false"
+            aria-label="Blue 카드"
+          >
+            <span class="about-card__hover">
+              <img
+                src="./assets/images/cardblue.png"
+                alt="About me blue card"
+                width="1331"
+                height="671"
+                loading="lazy"
+                decoding="async"
+                draggable="false"
+              />
+            </span>
+          </button>
+        </div>
+      </section>
+
+      <section id="skills" class="skills" aria-label="사용 툴">
+        <div class="skills-marquee">
+          <div class="skills-track">
+            <div class="skills-group">
+              <div class="skills-item">
+                <img src="./assets/images/skill1.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill2.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill3.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill5.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill6.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill7.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill8.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill9.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill10.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill11.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill12.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill13.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill14.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill15.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill16.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill17.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill18.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill19.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill20.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill21.png" alt="" draggable="false" />
+              </div>
+            </div>
+
+            <div class="skills-group" aria-hidden="true">
+              <div class="skills-item">
+                <img src="./assets/images/skill1.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill2.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill3.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill5.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill6.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill7.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill8.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill9.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill10.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill11.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill12.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill13.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill14.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill15.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill16.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill17.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill18.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill19.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill20.png" alt="" draggable="false" />
+              </div>
+              <div class="skills-item">
+                <img src="./assets/images/skill21.png" alt="" draggable="false" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="portfolio" class="gallery" aria-label="프로젝트">
+        <div class="gallery-marquee">
+          <div class="gallery-track" data-gallery-track></div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact" aria-label="연락처">
+        <div class="contact-inner">
+          <div class="contact-flyers" data-contact-flyers></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <a class="footer-logo" href="#hero" aria-label="홈">
+          <img src="./assets/images/logo_white.png" alt="" draggable="false" />
+        </a>
+        <hr class="footer-divider" />
+        <div class="footer-row">
+          <p class="footer-desc">
+            사용자의 경험을 고민하고, 디자인으로 답을 찾아갑니다.<br />
+            새로운 환경에서 배우며 함께 성장하고 싶습니다.
+          </p>
+          <div class="footer-socials" data-footer-socials></div>
+        </div>
+        <p class="footer-email">Email. lee.gyoyeon@gmail.com</p>
+        <p class="footer-copyright">COPYRIGHT ©LEE GYO YEON. ALL RIGHTS RESERVED.</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+    <script src="./js/hero.js"></script>
+    <script src="./js/gallery.js"></script>
+    <script src="./js/contact.js"></script>
+    <script src="./js/footer.js"></script>
+  </body>
+</html>

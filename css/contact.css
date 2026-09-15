@@ -1,0 +1,119 @@
+.contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: clamp(400px, 34.375vw, 660px);
+  overflow: hidden;
+  background-color: #8a8a8a;
+  background-image: url("../assets/images/contact_bg.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.contact-inner {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(100%, 1080px);
+  padding: 32px 40px;
+}
+
+.contact-flyers {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(40px, 4.5vw, 72px);
+  width: 100%;
+}
+
+.contact-flyer {
+  position: relative;
+  z-index: 1;
+  display: block;
+  flex: 0 0 auto;
+  width: min(20vw, 250px);
+  cursor: pointer;
+  transform: rotate(var(--tilt, 0deg));
+  transform-origin: center center;
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.2));
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    z-index 0s linear 0.4s;
+}
+
+.contact-flyer:nth-child(2) {
+  z-index: 2;
+}
+
+.contact-flyer img {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .contact-flyer:hover {
+    z-index: 8;
+    transform: translateY(-20px) scale(1.08) rotate(0deg);
+    filter: drop-shadow(0 22px 32px rgba(0, 0, 0, 0.25));
+    transition:
+      transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      filter 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      z-index 0s;
+  }
+}
+
+@media (max-width: 1199px) {
+  .contact {
+    height: clamp(380px, 46vw, 520px);
+  }
+
+  .contact-inner {
+    width: min(100%, 860px);
+    padding: 28px 32px;
+  }
+
+  .contact-flyer {
+    width: min(24vw, 230px);
+  }
+}
+
+@media (max-width: 767px) {
+  .contact {
+    height: auto;
+    min-height: 300px;
+    padding: 28px 0 36px;
+  }
+
+  .contact-inner {
+    width: 100%;
+    padding: 20px 16px;
+  }
+
+  .contact-flyers {
+    gap: 12px;
+  }
+
+  .contact-flyer {
+    width: min(28vw, 150px);
+    transform: rotate(calc(var(--tilt, 0deg) * 0.45));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-flyer {
+    transition: none;
+  }
+
+  .contact-flyer:hover {
+    transform: rotate(0deg);
+    filter: drop-shadow(0 14px 20px rgba(0, 0, 0, 0.22));
+  }
+}

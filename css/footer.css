@@ -1,0 +1,138 @@
+.footer {
+  width: 100%;
+  background: #222;
+  color: #fff;
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: min(100%, 1080px);
+  min-height: 280px;
+  margin: 0 auto;
+  padding: 28px 40px 32px;
+}
+
+.footer-logo {
+  display: block;
+  width: 58px;
+}
+
+.footer-logo img {
+  width: 100%;
+  height: auto;
+}
+
+.footer-divider {
+  width: 100%;
+  margin: 14px 0 18px;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.footer-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.footer-desc {
+  max-width: 520px;
+  font-family: Pretendard, "Apple SD Gothic Neo", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.65;
+  letter-spacing: -0.02em;
+}
+
+.footer-email,
+.footer-copyright {
+  font-family: Pretendard, "Apple SD Gothic Neo", sans-serif;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.footer-email {
+  margin-top: 16px;
+  font-size: 13px;
+}
+
+.footer-copyright {
+  margin-top: 4px;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.footer-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  opacity: 0.85;
+  transform: scale(1);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.footer-social img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.footer-social[aria-label="Behance"] {
+  width: 40px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .footer-social:hover {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+@media (max-width: 1199px) {
+  .footer-inner {
+    padding: 26px 32px 30px;
+  }
+
+  .footer-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .footer-inner {
+    min-height: 0;
+    padding: 24px 20px 28px;
+  }
+
+  .footer-logo {
+    width: 50px;
+  }
+
+  .footer-divider {
+    margin: 12px 0 16px;
+  }
+
+  .footer-desc {
+    font-size: 13px;
+  }
+
+  .footer-socials {
+    gap: 28px;
+  }
+}
