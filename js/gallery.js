@@ -121,16 +121,11 @@ const projects = [
   },
 ];
 
-function padProjectId(id) {
-  return String(id).padStart(2, "0");
-}
-
 function createGalleryCard(project, options = {}) {
-  const index = padProjectId(project.id);
   const card = document.createElement("a");
   card.className = "gallery-card";
   card.href = project.url;
-  card.setAttribute("aria-label", `${index}. ${project.title}`);
+  card.setAttribute("aria-label", project.title);
 
   if (options.hidden) {
     card.tabIndex = -1;
@@ -144,10 +139,6 @@ function createGalleryCard(project, options = {}) {
     if (!project.ready) event.preventDefault();
   });
 
-  const indexEl = document.createElement("p");
-  indexEl.className = "gallery-card__index";
-  indexEl.textContent = `${index}.`;
-
   const titleEl = document.createElement("h3");
   titleEl.className = "gallery-card__title";
   titleEl.textContent = project.title;
@@ -157,19 +148,20 @@ function createGalleryCard(project, options = {}) {
 
   const tag = document.createElement("span");
   tag.className = "gallery-card__tag";
-  tag.textContent =
-    project.tag.charAt(0) + project.tag.slice(1).toLowerCase();
+  tag.textContent = project.tag.charAt(0) + project.tag.slice(1).toLowerCase();
 
   const img = document.createElement("img");
   img.alt = options.hidden ? "" : project.title;
   img.draggable = false;
-  img.addEventListener("load", () => {
-    thumb.appendChild(img);
-  });
   img.src = project.image;
+  const attachImage = () => {
+    if (img.naturalWidth && !thumb.contains(img)) thumb.appendChild(img);
+  };
+  if (img.complete) attachImage();
+  else img.addEventListener("load", attachImage);
 
   thumb.append(tag);
-  card.append(indexEl, titleEl, thumb);
+  card.append(titleEl, thumb);
   return card;
 }
 
@@ -185,11 +177,47 @@ function createGalleryGroup(hidden) {
   return group;
 }
 
+function getLoopWidth(track) {
+  const group = track.querySelector(".gallery-group");
+  return group ? group.offsetWidth : 0;
+}
+
+function initHorizontalGallery(section, track) {
+  if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") {
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return;
+  }
+
+  gsap.to(track, {
+    x: () => -getLoopWidth(track),
+    ease: "none",
+    scrollTrigger: {
+      trigger: section,
+      start: "top top",
+      end: () => `+=${Math.round(getLoopWidth(track) * 1.55)}`,
+      pin: true,
+      scrub: 1.15,
+      invalidateOnRefresh: true,
+      anticipatePin: 1,
+    },
+  });
+}
+
 function initGallery() {
+  const section = document.querySelector(".section-project");
   const track = document.querySelector("[data-gallery-track]");
-  if (!track) return;
+  if (!section || !track) return;
 
   track.append(createGalleryGroup(false), createGalleryGroup(true));
+  initHorizontalGallery(section, track);
 }
 
 document.addEventListener("DOMContentLoaded", initGallery);
+window.addEventListener("load", () => {
+  if (typeof ScrollTrigger !== "undefined") ScrollTrigger.refresh();
+});

@@ -11,6 +11,10 @@ body {
   min-height: 100%;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: Pretendard, "Apple SD Gothic Neo", sans-serif;
   background: #7ec8f0;

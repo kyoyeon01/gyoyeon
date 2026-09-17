@@ -1,136 +1,203 @@
 .about {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  z-index: 1;
   width: 100%;
   height: 100vh;
-  min-height: 720px;
-  overflow: hidden;
+  min-height: 100vh;
+  overflow: visible;
   background: #3c3c3c;
 }
 
-.about-card-stack {
-  --about-shift: 52px;
-  --about-lift: -88px;
-  --about-tilt: 5deg;
-  --about-ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --about-card-w: min(45vw, 860px);
-  position: relative;
-  width: var(--about-card-w);
-  height: calc(96px + var(--about-card-w) * 2684 / 5324);
+.sketchbook-wrap {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  width: min(72vw, 960px);
+  pointer-events: none;
+  transform: translate(-50%, -50%) rotate(-12deg) scale(0.85);
+  transform-origin: center center;
+}
+
+.sketchbook-wrap.is-ready {
+  pointer-events: auto;
+}
+
+.sketchbook {
+  display: block;
+  width: 100%;
+  height: auto;
+  user-select: none;
+}
+
+.sketchbook-blank {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
+.sketchbook-intro {
+  position: absolute;
+  left: 14%;
+  right: 14%;
+  top: 24%;
+  bottom: 12%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #6b4330;
+  text-align: center;
+  font-family: Pretendard, "Apple SD Gothic Neo", sans-serif;
   pointer-events: none;
 }
 
-.about-card {
-  position: absolute;
-  top: 96px;
-  left: 50%;
-  z-index: 1;
-  width: 100%;
-  padding: 0;
-  overflow: visible;
-  pointer-events: auto;
-  cursor: pointer;
-  background: none;
-  transform: translateX(-50%);
+.sketchbook-line {
+  min-height: 1.5em;
+  margin: 0;
+  font-size: clamp(15px, 1.55vw, 24px);
+  line-height: 1.75;
+  letter-spacing: -0.02em;
 }
 
-.about-card.is-active {
-  z-index: 4;
+.sketchbook-line:first-child {
+  margin-bottom: 8px;
+  font-size: clamp(20px, 2vw, 30px);
+  font-weight: 700;
+}
+
+.sketchbook-line.is-typing::after {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 0.9em;
+  margin-left: 2px;
+  background: #6b4330;
+  vertical-align: -0.08em;
+  animation: type-caret 0.7s steps(1) infinite;
+}
+
+@keyframes type-caret {
+  50% {
+    opacity: 0;
+  }
+}
+
+.sketchbook-btn {
+  margin-top: 22px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: #6b4330;
+  color: #f6efe6;
+  font-family: Pretendard, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  box-shadow: 0 6px 0 #4d2f20, 0 10px 18px rgba(77, 47, 32, 0.22);
+  transform: rotate(-2deg) scale(0.8);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sketchbook-btn.is-on {
+  pointer-events: auto;
+}
+
+.about-more {
+  position: absolute;
+  left: 50%;
+  bottom: 6%;
+  z-index: 5;
+  transform: translateX(-50%);
+  color: #f6efe6;
+  font-family: Pretendard, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.about-more.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.about-deck {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.about-deck.is-open {
+  pointer-events: auto;
+}
+
+.about-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 0;
+  border: 0;
+  background: transparent;
   cursor: default;
 }
 
-.about-card.is-left {
-  z-index: 3;
+.about-overlay[hidden] {
+  display: none;
 }
 
-.about-card.is-right {
+.card-area {
+  position: absolute;
+  inset: 0;
   z-index: 2;
+  pointer-events: none;
 }
 
-.about-card:focus {
-  outline: none;
+.about-deck.is-open .about-note {
+  pointer-events: auto;
 }
 
-.about-card:focus-visible {
-  outline: 2px solid #fff;
-  outline-offset: 6px;
+.about-note {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  width: min(42vw, 420px);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.8);
+  cursor: pointer;
 }
 
-.about-card__hover {
-  display: block;
-  width: 100%;
-  filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.14));
-  transform: translateY(0) scale(1);
-  transition:
-    transform 0.3s var(--about-ease),
-    filter 0.3s var(--about-ease);
+.about-note.is-focus {
+  z-index: 10;
 }
 
-.about-card.is-active .about-card__hover {
-  filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.2));
-}
-
-.about-card-stack:not(.is-animating) .about-card:not(.is-active):hover .about-card__hover,
-.about-card-stack:not(.is-animating) .about-card:not(.is-active):focus-visible .about-card__hover {
-  filter: drop-shadow(0 16px 22px rgba(0, 0, 0, 0.2));
-  transform: translateY(-12px) scale(1.01);
-}
-
-.about-card img {
+.about-note img {
   width: 100%;
   height: auto;
+  object-fit: contain;
 }
 
-@media (max-width: 1199px) and (min-width: 768px) {
-  .about {
-    min-height: 640px;
-  }
-
-  .about-card-stack {
-    --about-shift: 32px;
-    --about-lift: -64px;
-    --about-tilt: 4deg;
-    --about-card-w: min(62vw, 640px);
-    height: calc(72px + var(--about-card-w) * 2684 / 5324);
-  }
-
-  .about-card {
-    top: 72px;
-  }
+.about-note.is-focus img {
+  filter: none;
 }
 
 @media (max-width: 767px) {
-  .about {
-    min-height: 640px;
+  .sketchbook-wrap {
+    width: min(92vw, 520px);
   }
 
-  .about-card-stack {
-    --about-shift: 16px;
-    --about-lift: -48px;
-    --about-tilt: 2.5deg;
-    --about-card-w: min(86vw, 420px);
-    height: calc(56px + var(--about-card-w) * 2684 / 5324);
+  .sketchbook-line {
+    font-size: 14px;
   }
 
-  .about-card {
-    top: 56px;
-  }
-
-  .about-card-stack:not(.is-animating) .about-card:not(.is-active):hover .about-card__hover,
-  .about-card-stack:not(.is-animating) .about-card:not(.is-active):focus-visible .about-card__hover {
-    transform: translateY(-8px) scale(1.01);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .about-card__hover {
-    transition-duration: 0.01ms;
-  }
-
-  .about-card-stack:not(.is-animating) .about-card:not(.is-active):hover .about-card__hover,
-  .about-card-stack:not(.is-animating) .about-card:not(.is-active):focus-visible .about-card__hover {
-    transform: none;
+  .about-note {
+    width: min(64vw, 280px);
   }
 }
