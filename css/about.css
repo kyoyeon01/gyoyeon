@@ -6,198 +6,207 @@
   min-height: 100vh;
   overflow: visible;
   background: #3c3c3c;
+  --book-page-count: 8;
+  --book-spine: #c9bea9;
+  --book-cover: transparent;
+  --book-insert: #d9d9d9;
+  --book-paper: #e6e6e6;
+  --book-rule: rgba(64, 64, 64, 0.4);
 }
 
-.sketchbook-wrap {
+.book-stage {
   position: absolute;
   left: 50%;
   top: 50%;
-  z-index: 2;
-  width: min(72vw, 960px);
+  z-index: 10;
+  width: 45vh;
+  height: 60vh;
+  min-width: 150px;
+  min-height: 200px;
   pointer-events: none;
-  transform: translate(-50%, -50%) rotate(-12deg) scale(0.85);
-  transform-origin: center center;
+  perspective: 1200px;
+  transform: translate(-50%, -50%) scale(0.78);
+  transform-origin: 50% 50%;
+  will-change: transform;
 }
 
-.sketchbook-wrap.is-ready {
-  pointer-events: auto;
-}
-
-.sketchbook {
-  display: block;
+.book {
+  position: relative;
   width: 100%;
-  height: auto;
-  user-select: none;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50%;
+  will-change: transform;
 }
 
-.sketchbook-blank {
+.page {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.page__half {
+  --rotation: 0;
+  --coefficient: 0;
   position: absolute;
-  left: 0;
   top: 0;
-  opacity: 0;
-}
-
-.sketchbook-intro {
-  position: absolute;
-  left: 14%;
-  right: 14%;
-  top: 24%;
-  bottom: 12%;
+  left: 0;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #6b4330;
-  text-align: center;
-  font-family: Pretendard, "Apple SD Gothic Neo", sans-serif;
-  pointer-events: none;
-}
-
-.sketchbook-line {
-  min-height: 1.5em;
-  margin: 0;
-  font-size: clamp(15px, 1.55vw, 24px);
-  line-height: 1.75;
-  letter-spacing: -0.02em;
-}
-
-.sketchbook-line:first-child {
-  margin-bottom: 8px;
-  font-size: clamp(20px, 2vw, 30px);
-  font-weight: 700;
-}
-
-.sketchbook-line.is-typing::after {
-  content: "";
-  display: inline-block;
-  width: 1px;
-  height: 0.9em;
-  margin-left: 2px;
-  background: #6b4330;
-  vertical-align: -0.08em;
-  animation: type-caret 0.7s steps(1) infinite;
-}
-
-@keyframes type-caret {
-  50% {
-    opacity: 0;
-  }
-}
-
-.sketchbook-btn {
-  margin-top: 22px;
-  padding: 10px 22px;
-  border-radius: 999px;
-  background: #6b4330;
-  color: #f6efe6;
-  font-family: Pretendard, sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  box-shadow: 0 6px 0 #4d2f20, 0 10px 18px rgba(77, 47, 32, 0.22);
-  transform: rotate(-2deg) scale(0.8);
-  opacity: 0;
-  pointer-events: none;
-}
-
-.sketchbook-btn.is-on {
-  pointer-events: auto;
-}
-
-.about-more {
-  position: absolute;
-  left: 50%;
-  bottom: 6%;
-  z-index: 5;
-  transform: translateX(-50%);
-  color: #f6efe6;
-  font-family: Pretendard, sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.about-more.is-visible {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.about-deck {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  pointer-events: none;
-}
-
-.about-deck.is-open {
-  pointer-events: auto;
-}
-
-.about-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  cursor: default;
-}
-
-.about-overlay[hidden] {
-  display: none;
-}
-
-.card-area {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.about-deck.is-open .about-note {
-  pointer-events: auto;
-}
-
-.about-note {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  z-index: 2;
-  width: min(42vw, 420px);
-  padding: 0;
-  border: 0;
-  background: transparent;
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0.8);
-  cursor: pointer;
-}
-
-.about-note.is-focus {
-  z-index: 10;
-}
-
-.about-note img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  clip-path: inset(0 0.5% 0 0.5%);
+  transform: rotateY(calc(var(--rotation) * 1deg))
+    translate3d(0, 0, calc((0.5 * var(--coefficient)) * 1px));
+}
+
+.page__half--front {
+  border-radius: 0 5% 5% 0;
+  backface-visibility: hidden;
+}
+
+.page__half--back {
+  --rotation: 180;
+  --coefficient: 2;
+  border-radius: 5% 0 0 5%;
+}
+
+.page__number {
+  position: absolute;
+  bottom: 1rem;
+  z-index: 2;
+  color: #808080;
+  font-size: 1vmin;
+}
+
+.page__half--front .page__number {
+  right: 1rem;
+}
+
+.page__half--back .page__number {
+  left: 1rem;
+}
+
+.book__spine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 100%;
+  background: var(--book-spine);
+  transform: translate3d(0, 0, -13px);
+  transform-origin: 0 50%;
+  opacity: 0;
+}
+
+.book__page {
+  position: absolute;
+  top: 50%;
+  left: 2%;
+  width: 94%;
+  height: 94%;
+  border-radius: 0 5% 5% 0;
+  z-index: calc(((var(--book-page-count) + 2) - var(--page-index)) * 2);
+  transform: translateY(-50%);
+  transform-origin: 0 50%;
+  will-change: transform;
+}
+
+.book__page:not(.book__cover) .page__half {
+  background:
+    repeating-linear-gradient(
+        0deg,
+        transparent 0 1rem,
+        var(--book-rule) 1rem calc(1rem + 1px),
+        transparent calc(1rem + 1px)
+      )
+      0 1rem / 100% 100% no-repeat,
+    var(--book-paper);
+}
+
+.page-content {
+  position: absolute;
+  inset: 2.5%;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.page-content img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
   object-fit: contain;
 }
 
-.about-note.is-focus img {
-  filter: none;
+.book__cover {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0 5% 5% 0;
+  background: var(--book-cover);
+}
+
+.book__cover--front .page__half--back {
+  border-right: 0.65rem solid var(--book-spine);
+  background: #e8e0d3;
+}
+
+.book__cover--back .page__half--front {
+  border-left: 0.65rem solid var(--book-spine);
+  background: #e8e0d3;
+}
+
+.book__cover--back {
+  background: #e8e0d3;
+}
+
+.book__cover--front .page__half--front {
+  overflow: hidden;
+}
+
+.book__cover-image {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  border-radius: 2% 5% 5% 2%;
+  object-fit: cover;
+  transform: scale(1.07);
+}
+
+.book__insert {
+  position: absolute;
+  top: 50%;
+  right: -1rem;
+  width: 94%;
+  height: 94%;
+  border-radius: 5% 0 0 5%;
+  background: var(--book-insert);
+  transform: translateY(-50%);
+}
+
+.book__cover--back .book__insert {
+  right: auto;
+  left: 0;
+  border-radius: 0 5% 5% 0;
 }
 
 @media (max-width: 767px) {
-  .sketchbook-wrap {
-    width: min(92vw, 520px);
+  .book-stage {
+    width: min(45vh, 88vw);
+    height: auto;
+    aspect-ratio: 3 / 4;
   }
+}
 
-  .sketchbook-line {
-    font-size: 14px;
-  }
-
-  .about-note {
-    width: min(64vw, 280px);
+@media (prefers-reduced-motion: reduce) {
+  .book-stage {
+    transform: translate(-50%, -50%) scale(1);
   }
 }
