@@ -17,6 +17,9 @@ function initBook() {
 
   const pages = gsap.utils.toArray(".book__page", book);
   const flippablePages = pages.slice(0, -1);
+  const pageCount =
+    Number.parseFloat(getComputedStyle(about).getPropertyValue("--page-count")) ||
+    8;
   const reducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
   ).matches;
@@ -27,7 +30,7 @@ function initBook() {
     xPercent: -50,
     yPercent: -50,
     y: reducedMotion ? 0 : heroOffset,
-    scale: reducedMotion ? 1 : 0.78,
+    scale: reducedMotion ? 1 : 1.14,
     transformOrigin: "50% 50%",
   });
 
@@ -44,7 +47,11 @@ function initBook() {
     });
   });
 
-  if (reducedMotion) return;
+  if (reducedMotion) {
+    const aboutHeading = about.querySelector("[data-about-heading]");
+    if (aboutHeading) gsap.set(aboutHeading, { opacity: 1, y: 0 });
+    return;
+  }
 
   const floating = gsap.to(book, {
     y: 7,
@@ -84,12 +91,28 @@ function initBook() {
       0,
     );
 
+  const aboutHeading = about.querySelector("[data-about-heading]");
+  if (aboutHeading) {
+    gsap.set(aboutHeading, { opacity: 0, y: 30 });
+    gsap.to(aboutHeading, {
+      opacity: 1,
+      y: 0,
+      duration: 0.75,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: about,
+        start: "top top",
+        toggleActions: "play none none reverse",
+      },
+    });
+  }
+
   const flipTimeline = gsap.timeline({
     defaults: { ease: "none" },
     scrollTrigger: {
       trigger: about,
       start: "top top",
-      end: () => `+=${window.innerHeight * (0.45 + flippablePages.length * 0.55)}`,
+      end: () => `+=${window.innerHeight * (0.45 + pageCount * 0.55)}`,
       pin: true,
       scrub: 1,
       anticipatePin: 1,

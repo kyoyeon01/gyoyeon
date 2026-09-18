@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>교 · About Me</title>
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
+    <link rel="stylesheet" href="./css/base.css?v=heading" />
+    <link rel="stylesheet" href="./css/hero.css" />
+    <link rel="stylesheet" href="./css/footer.css" />
+    <link rel="stylesheet" href="./css/contact-modal.css" />
+    <link rel="stylesheet" href="./css/about-page.css?v=heading" />
+  </head>
+  <body class="about-page">
+    <div class="about-sky" aria-hidden="true">
+      <div class="about-sky-photo"></div>
+      <svg class="about-sky-stars" viewBox="0 0 1440 1100" preserveAspectRatio="xMidYMid slice">
+        <g fill="#6f93ad">
+          <path transform="translate(1120 90) scale(3.4)" opacity="0.42" d="M12 0 L14.8 8.4 L24 9.2 L17.2 15 L19.2 24 L12 19.2 L4.8 24 L6.8 15 L0 9.2 L9.2 8.4 Z" />
+          <path transform="translate(180 140) scale(1.4)" opacity="0.36" d="M12 0 L14.8 8.4 L24 9.2 L17.2 15 L19.2 24 L12 19.2 L4.8 24 L6.8 15 L0 9.2 L9.2 8.4 Z" />
+          <path transform="translate(820 50) scale(0.9)" opacity="0.34" d="M12 0 L14.8 8.4 L24 9.2 L17.2 15 L19.2 24 L12 19.2 L4.8 24 L6.8 15 L0 9.2 L9.2 8.4 Z" />
+          <path transform="translate(1260 310) scale(2.1)" opacity="0.38" d="M12 0 L14.8 8.4 L24 9.2 L17.2 15 L19.2 24 L12 19.2 L4.8 24 L6.8 15 L0 9.2 L9.2 8.4 Z" />
+          <path transform="translate(70 480) scale(1.15)" opacity="0.32" d="M12 0 L14.8 8.4 L24 9.2 L17.2 15 L19.2 24 L12 19.2 L4.8 24 L6.8 15 L0 9.2 L9.2 8.4 Z" />
+          <path transform="translate(620 210) scale(0.7)" opacity="0.34" d="M12 0 L14.8 8.4 L24 9.2 L17.2 15 L19.2 24 L12 19.2 L4.8 24 L6.8 15 L0 9.2 L9.2 8.4 Z" />
+          <path transform="translate(400 70) scale(0.55)" opacity="0.3" d="M12 0 L14.8 8.4 L24 9.2 L17.2 15 L19.2 24 L12 19.2 L4.8 24 L6.8 15 L0 9.2 L9.2 8.4 Z" />
+          <path transform="translate(960 540) scale(1.5)" opacity="0.36" d="M12 0 L14.8 8.4 L24 9.2 L17.2 15 L19.2 24 L12 19.2 L4.8 24 L6.8 15 L0 9.2 L9.2 8.4 Z" />
+          <path transform="translate(250 720) scale(2.2)" opacity="0.34" d="M12 0 L14.8 8.4 L24 9.2 L17.2 15 L19.2 24 L12 19.2 L4.8 24 L6.8 15 L0 9.2 L9.2 8.4 Z" />
+          <path transform="translate(1180 760) scale(0.8)" opacity="0.3" d="M12 0 L14.8 8.4 L24 9.2 L17.2 15 L19.2 24 L12 19.2 L4.8 24 L6.8 15 L0 9.2 L9.2 8.4 Z" />
+          <path transform="translate(520 860) scale(1.7)" opacity="0.32" d="M12 0 L14.8 8.4 L24 9.2 L17.2 15 L19.2 24 L12 19.2 L4.8 24 L6.8 15 L0 9.2 L9.2 8.4 Z" />
+          <path transform="translate(780 380) scale(0.5)" opacity="0.28" d="M12 0 L14.8 8.4 L24 9.2 L17.2 15 L19.2 24 L12 19.2 L4.8 24 L6.8 15 L0 9.2 L9.2 8.4 Z" />
+        </g>
+      </svg>
+    </div>
+    <div class="about-shell">
+      <header class="hero-header">
+        <a class="hero-logo" href="./index.html" aria-label="홈">
+          <img src="./assets/images/logo_black.svg" alt="" />
+        </a>
+
+        <nav class="hero-nav" aria-label="주요 메뉴">
+          <a href="./about.html">ABOUT ME</a>
+          <a href="./portfolio/">PORTFOLIO</a>
+          <a href="./index.html#contact">CONTACT</a>
+        </nav>
+
+        <button
+          class="hero-menu-toggle"
+          type="button"
+          aria-label="메뉴 열기"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="hero-menu-panel" hidden>
+          <a href="./about.html">ABOUT ME</a>
+          <a href="./portfolio/">PORTFOLIO</a>
+          <a href="./index.html#contact">CONTACT</a>
+        </div>
+      </header>
+
+      <main class="about-main">
+        <section class="about-hero-copy">
+          <h1 class="about-title" data-about-title>이름에서 시작된 로고 디자인</h1>
+          <p class="about-lead" data-about-lead>
+            다리 교와 고울 연을 모티브로<br />
+            ‘연결’과 ‘아름다움’이라는 의미를<br />
+            시각적으로 풀어낸 포트폴리오 디자인입니다.
+          </p>
+        </section>
+
+        <section class="about-mark" aria-label="교 로고">
+          <img
+            class="about-mark-image"
+            data-about-logo
+            src="./assets/images/logo_black.svg"
+            alt="교 로고"
+            draggable="false"
+          />
+        </section>
+
+        <section class="about-names" aria-label="이름 의미">
+          <div class="about-name" data-kyo>
+            <span class="about-char">橋</span>
+            <p class="about-name-kicker">(다리) 교</p>
+            <p class="about-name-copy">
+              연결 / 다리 / 구조<br />
+              직선 / 단단함
+            </p>
+          </div>
+          <span class="about-plus" data-plus>+</span>
+          <div class="about-name" data-yeon>
+            <span class="about-char">妍</span>
+            <p class="about-name-kicker">(고울) 연</p>
+            <p class="about-name-copy">
+              아름다움 / 우아함 / 섬세함<br />
+              곡선 / 부드러움
+            </p>
+          </div>
+        </section>
+
+        <section class="about-keys" aria-label="디자인 키워드">
+          <article class="about-key" data-about-key>
+            <div class="about-key-icon" aria-hidden="true">
+              <svg viewBox="0 0 120 88" fill="none">
+                <rect x="28" y="26" width="64" height="36" stroke="currentColor" stroke-width="2" />
+              </svg>
+            </div>
+            <h2>구조적인 형태</h2>
+            <p>(교)</p>
+          </article>
+          <article class="about-key" data-about-key>
+            <div class="about-key-icon" aria-hidden="true">
+              <svg viewBox="0 0 120 88" fill="none">
+                <path d="M24 34 H96" stroke="currentColor" stroke-width="2" />
+                <path d="M38 34 V62" stroke="currentColor" stroke-width="2" />
+                <path d="M82 34 V62" stroke="currentColor" stroke-width="2" />
+              </svg>
+            </div>
+            <h2>연결하는 선</h2>
+            <p>(다리)</p>
+          </article>
+          <article class="about-key" data-about-key>
+            <div class="about-key-icon" aria-hidden="true">
+              <svg viewBox="0 0 120 88" fill="none">
+                <path
+                  d="M24 50 C 44 18, 76 72, 96 32"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+            <h2>부드러운 곡선</h2>
+            <p>(연)</p>
+          </article>
+        </section>
+
+        <section class="about-profile" aria-label="프로필">
+          <div class="profile-container">
+            <h2 class="section-heading" data-profile-title>PROFILE</h2>
+            <div class="profile-content">
+              <div class="profile-left">
+                <img
+                  class="profile-photo"
+                  data-profile-photo
+                  src="./assets/images/profile.jpg?v=hires"
+                  alt="이교연 프로필 사진"
+                />
+                <dl class="profile-meta">
+                  <div data-profile-meta>
+                    <dt>Name</dt>
+                    <dd>이교연</dd>
+                  </div>
+                  <div data-profile-meta>
+                    <dt>Birth</dt>
+                    <dd>2002.01.09</dd>
+                  </div>
+                  <div data-profile-meta>
+                    <dt>Phone</dt>
+                    <dd>010-2427-0502</dd>
+                  </div>
+                  <div data-profile-meta>
+                    <dt>E-mail</dt>
+                    <dd>lee.gyoyeon@gmail.com</dd>
+                  </div>
+                </dl>
+              </div>
+
+              <div class="profile-right">
+                <section class="profile-block" data-profile-block>
+                  <h3 class="section-title">Education</h3>
+                  <ul class="list">
+                    <li>
+                      <span class="date">2026.10</span>
+                      <p class="description">이제아카데미 SEO 최적화 디지털 브랜딩 UI/UX 웹서비스 - 수료</p>
+                    </li>
+                    <li>
+                      <span class="date">2027.02</span>
+                      <p class="description">한국공학대학교 산업디자인공학과 - 졸업 예정 (현재 수료)</p>
+                    </li>
+                  </ul>
+                </section>
+
+                <section class="profile-block" data-profile-block>
+                  <h3 class="section-title">Awards &amp; Act</h3>
+                  <ul class="list">
+                    <li>
+                      <span class="date">2023.11</span>
+                      <p class="description">서울 도시브랜드 굿즈 디자인 공모전 - 작품 출품</p>
+                    </li>
+                    <li>
+                      <span class="date">2024.05</span>
+                      <p class="description">대한민국디자인전람회 - 작품 출품</p>
+                    </li>
+                    <li>
+                      <span class="date">2024.08</span>
+                      <p class="description">KBO 나인(NINE) 대학 지역연계 ESG - 프로그램 참여</p>
+                    </li>
+                    <li>
+                      <span class="date"></span>
+                      <p class="description">한국야구위원회 KBO - 하이라이트 수상</p>
+                    </li>
+                    <li>
+                      <span class="date"></span>
+                      <p class="description">KoEF - 우수상 수상</p>
+                    </li>
+                    <li>
+                      <span class="date">2024.10</span>
+                      <p class="description">경기도 공공디자인 공모전 - 동상 수상</p>
+                    </li>
+                    <li>
+                      <span class="date">2025.10</span>
+                      <p class="description">한국공학대학교 디자인공학부 졸업전시회 &lt;잔향&gt; - 작품 전시</p>
+                    </li>
+                    <li>
+                      <span class="date">2026.01</span>
+                      <p class="description">Global Capstone Program in Canada(TMU) - 프로그램 참여</p>
+                    </li>
+                    <li>
+                      <span class="date"></span>
+                      <p class="description">TMU ELI - Global Capstone Award 수상</p>
+                    </li>
+                  </ul>
+                </section>
+
+                <section class="profile-block" data-profile-block>
+                  <h3 class="section-title">License</h3>
+                  <ul class="list">
+                    <li>
+                      <span class="date">2022.07</span>
+                      <p class="description">운전면허 2종 보통 - 인천경찰청</p>
+                    </li>
+                    <li>
+                      <span class="date">2023.05</span>
+                      <p class="description">아동미술심리상담사1급 - 한국직업능력진흥원</p>
+                    </li>
+                    <li>
+                      <span class="date"></span>
+                      <p class="description">미술심리상담사1급 - 한국직업능력진흥원</p>
+                    </li>
+                    <li>
+                      <span class="date">2026.06</span>
+                      <p class="description">GTQ Photoshop 1급 - 한국생산성본부</p>
+                    </li>
+                  </ul>
+                </section>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="about-skill" aria-label="사용 툴">
+          <div class="skill-container">
+            <h2 class="section-heading" data-skill-title>SKILL</h2>
+
+            <div class="skill-list">
+              <article class="skill-row" data-skill-row>
+                <header class="skill-row-head">
+                  <span class="skill-index">01</span>
+                  <div class="skill-copy">
+                    <h3>DESIGN</h3>
+                    <p>형태와 레이아웃을 다루는 시각 작업 도구</p>
+                  </div>
+                </header>
+                <ul class="skill-icons">
+                  <li><img src="./assets/images/skill7.png" alt="Photoshop" draggable="false" /></li>
+                  <li><img src="./assets/images/skill8.png" alt="Illustrator" draggable="false" /></li>
+                  <li><img src="./assets/images/skill9.png" alt="InDesign" draggable="false" /></li>
+                  <li><img src="./assets/images/skill10.png" alt="Figma" draggable="false" /></li>
+                  <li><img src="./assets/images/skill11.png" alt="Procreate" draggable="false" /></li>
+                  <li><img src="./assets/images/skill12.png" alt="Clip Studio Paint" draggable="false" /></li>
+                </ul>
+              </article>
+
+              <article class="skill-row" data-skill-row>
+                <header class="skill-row-head">
+                  <span class="skill-index">02</span>
+                  <div class="skill-copy">
+                    <h3>DEVELOPMENT</h3>
+                    <p>웹 화면을 만들고 인터랙션을 붙이는 도구</p>
+                  </div>
+                </header>
+                <ul class="skill-icons">
+                  <li><img src="./assets/images/skill1.png" alt="HTML" draggable="false" /></li>
+                  <li><img src="./assets/images/skill2.png" alt="CSS" draggable="false" /></li>
+                  <li><img src="./assets/images/skill3.png" alt="JavaScript" draggable="false" /></li>
+                  <li><img src="./assets/images/skill6.png" alt="GitHub" draggable="false" /></li>
+                </ul>
+              </article>
+
+              <article class="skill-row" data-skill-row>
+                <header class="skill-row-head">
+                  <span class="skill-index">03</span>
+                  <div class="skill-copy">
+                    <h3>3D &amp; MOTION</h3>
+                    <p>입체와 질감을 만들고 시각화하는 도구</p>
+                  </div>
+                </header>
+                <ul class="skill-icons">
+                  <li><img src="./assets/images/skill16.png" alt="Blender" draggable="false" /></li>
+                  <li><img src="./assets/images/skill14.png" alt="KeyShot" draggable="false" /></li>
+                  <li><img src="./assets/images/skill13.png" alt="Rhino" draggable="false" /></li>
+                  <li><img src="./assets/images/skill15.png" alt="Fusion 360" draggable="false" /></li>
+                  <li><img src="./assets/images/skill5.png" alt="Unity" draggable="false" /></li>
+                </ul>
+              </article>
+
+              <article class="skill-row" data-skill-row>
+                <header class="skill-row-head">
+                  <span class="skill-index">04</span>
+                  <div class="skill-copy">
+                    <h3>AI &amp; CREATIVE TOOL</h3>
+                    <p>아이디어를 확장하고 이미지를 생성하는 도구</p>
+                  </div>
+                </header>
+                <ul class="skill-icons">
+                  <li><img src="./assets/images/skill19.png" alt="ChatGPT" draggable="false" /></li>
+                  <li><img src="./assets/images/skill18.png" alt="Gemini" draggable="false" /></li>
+                  <li><img src="./assets/images/skill17.png" alt="Midjourney" draggable="false" /></li>
+                  <li><img src="./assets/images/skill20.png" alt="Adobe Firefly" draggable="false" /></li>
+                  <li><img src="./assets/images/skill21.png" alt="Runway" draggable="false" /></li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <a class="footer-logo" href="./index.html" aria-label="홈">
+          <img src="./assets/images/logo_white.png" alt="" draggable="false" />
+        </a>
+        <hr class="footer-divider" />
+        <div class="footer-row">
+          <p class="footer-desc">
+            사용자의 경험을 고민하고, 디자인으로 답을 찾아갑니다.<br />
+            새로운 환경에서 배우며 함께 성장하고 싶습니다.
+          </p>
+          <div class="footer-socials" data-footer-socials></div>
+        </div>
+        <p class="footer-email">Email. lee.gyoyeon@gmail.com</p>
+        <p class="footer-copyright">COPYRIGHT ©LEE GYO YEON. ALL RIGHTS RESERVED.</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+    <script src="./js/hero.js"></script>
+    <script src="./js/contact-modal.js"></script>
+    <script src="./js/about-page.js?v=skill1"></script>
+    <script src="./js/footer.js"></script>
+  </body>
+</html>

@@ -10,13 +10,14 @@
       crossorigin
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
     />
-    <link rel="stylesheet" href="./css/base.css" />
-    <link rel="stylesheet" href="./css/hero.css" />
-    <link rel="stylesheet" href="./css/about.css" />
-    <link rel="stylesheet" href="./css/skills.css" />
-    <link rel="stylesheet" href="./css/gallery.css?v=hscroll4" />
-    <link rel="stylesheet" href="./css/contact.css" />
+    <link rel="stylesheet" href="./css/base.css?v=notitle" />
+    <link rel="stylesheet" href="./css/hero.css?v=orbit2" />
+    <link rel="stylesheet" href="./css/about.css?v=titlein" />
+    <link rel="stylesheet" href="./css/skills.css?v=notitle" />
+    <link rel="stylesheet" href="./css/gallery.css?v=cover" />
+    <link rel="stylesheet" href="./css/contact.css?v=heading" />
     <link rel="stylesheet" href="./css/footer.css" />
+    <link rel="stylesheet" href="./css/contact-modal.css" />
   </head>
   <body>
     <main>
@@ -28,8 +29,8 @@
           </a>
 
           <nav class="hero-nav" aria-label="주요 메뉴">
-            <a href="#about">ABOUT ME</a>
-            <a href="#portfolio">PORTFOLIO</a>
+            <a href="./about.html">ABOUT ME</a>
+            <a href="./portfolio/">PORTFOLIO</a>
             <a href="#contact">CONTACT</a>
           </nav>
 
@@ -45,14 +46,14 @@
           </button>
 
           <div class="hero-menu-panel" hidden>
-            <a href="#about">ABOUT ME</a>
-            <a href="#portfolio">PORTFOLIO</a>
+            <a href="./about.html">ABOUT ME</a>
+            <a href="./portfolio/">PORTFOLIO</a>
             <a href="#contact">CONTACT</a>
           </div>
         </header>
 
         <div class="hero-stage">
-          <div class="hero-asset hero-sticker-clover" data-asset="clover">
+          <div class="hero-asset hero-sticker-clover">
             <div class="hero-asset-parallax" data-depth="0.45">
               <div class="hero-asset-float">
                 <img src="./assets/images/clover.svg" alt="" draggable="false" />
@@ -60,7 +61,7 @@
             </div>
           </div>
 
-          <div class="hero-asset hero-sticker-loading" data-asset="loading">
+          <div class="hero-asset hero-sticker-loading">
             <div class="hero-asset-parallax" data-depth="0.8">
               <div class="hero-asset-float">
                 <img src="./assets/images/loading.svg" alt="" draggable="false" />
@@ -68,7 +69,7 @@
             </div>
           </div>
 
-          <div class="hero-asset hero-sticker-red" data-asset="red">
+          <div class="hero-asset hero-sticker-red">
             <div class="hero-asset-parallax" data-depth="-0.4">
               <div class="hero-asset-float">
                 <img src="./assets/images/designer.svg" alt="" draggable="false" />
@@ -76,7 +77,7 @@
             </div>
           </div>
 
-          <div class="hero-asset hero-sticker-yellow" data-asset="yellow">
+          <div class="hero-asset hero-sticker-yellow">
             <div class="hero-asset-parallax" data-depth="0.55">
               <div class="hero-asset-float">
                 <img src="./assets/images/cat.svg" alt="" draggable="false" />
@@ -84,7 +85,7 @@
             </div>
           </div>
 
-          <div class="hero-asset hero-sticker-heart" data-asset="heart">
+          <div class="hero-asset hero-sticker-heart">
             <div class="hero-asset-parallax" data-depth="0.7">
               <div class="hero-asset-float">
                 <img src="./assets/images/heart.svg" alt="" draggable="false" />
@@ -92,7 +93,7 @@
             </div>
           </div>
 
-          <div class="hero-asset hero-sticker-target" data-asset="target">
+          <div class="hero-asset hero-sticker-target">
             <div class="hero-asset-parallax" data-depth="0.3">
               <div class="hero-asset-float">
                 <img src="./assets/images/point.svg" alt="" draggable="false" />
@@ -100,7 +101,7 @@
             </div>
           </div>
 
-          <div class="hero-asset hero-sticker-blue" data-asset="blue">
+          <div class="hero-asset hero-sticker-blue">
             <div class="hero-asset-parallax" data-depth="-0.25">
               <div class="hero-asset-float">
                 <img src="./assets/images/way.svg" alt="" draggable="false" />
@@ -111,10 +112,9 @@
       </section>
 
       <section id="about" class="about" aria-label="소개">
+        <h2 class="section-heading" data-about-heading>ABOUT ME</h2>
         <div class="book-stage" data-book-stage>
         <div class="book" data-book aria-label="스크롤로 펼쳐지는 3D 책">
-          <div class="book__spine"></div>
-
           <div
             class="page book__page book__cover book__cover--front"
             style="--page-index: 1"
@@ -122,7 +122,7 @@
             <div class="page__half page__half--front">
               <img
                 class="book__cover-image"
-                src="./assets/images/main.png?v=2"
+                src="./assets/images/main.png"
                 alt="2026 이교연 포트폴리오"
                 draggable="false"
               />
@@ -192,39 +192,9 @@
             </div>
           </div>
 
-          <div class="page book__page" style="--page-index: 6">
-            <div class="page__half page__half--front">
-              <div class="page-content">
-                <img src="./assets/images/9.png" alt="" draggable="false" />
-              </div>
-              <span class="page__number">9</span>
-            </div>
-            <div class="page__half page__half--back">
-              <div class="page-content">
-                <img src="./assets/images/10.png" alt="" draggable="false" />
-              </div>
-              <span class="page__number">10</span>
-            </div>
-          </div>
-
-          <div class="page book__page" style="--page-index: 7">
-            <div class="page__half page__half--front">
-              <div class="page-content">
-                <img src="./assets/images/11.png" alt="" draggable="false" />
-              </div>
-              <span class="page__number">11</span>
-            </div>
-            <div class="page__half page__half--back">
-              <div class="page-content">
-                <img src="./assets/images/12.png" alt="" draggable="false" />
-              </div>
-              <span class="page__number">12</span>
-            </div>
-          </div>
-
           <div
             class="page book__page book__cover book__cover--back"
-            style="--page-index: 8"
+            style="--page-index: 6"
           >
             <div class="page__half page__half--front"></div>
             <div class="page__half page__half--back"></div>
@@ -235,8 +205,9 @@
       </section>
       </div>
 
-      <section id="portfolio" class="gallery section-project" aria-label="프로젝트">
-        <div class="project-track gallery-track" data-gallery-track></div>
+      <section id="portfolio" class="gallery" aria-label="프로젝트">
+        <h2 class="section-heading">PROJECT</h2>
+        <div class="project-track" data-gallery-track></div>
       </section>
 
       <section id="skills" class="skills" aria-label="사용 툴">
@@ -372,6 +343,7 @@
       </section>
 
       <section id="contact" class="contact" aria-label="연락처">
+        <h2 class="section-heading">CONTACT</h2>
         <div class="contact-inner">
           <div class="contact-flyers" data-contact-flyers></div>
         </div>
@@ -399,9 +371,11 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
     <script src="./js/hero.js"></script>
-    <script src="./js/book.js"></script>
-    <script src="./js/gallery.js?v=hscroll4"></script>
+    <script src="./js/book.js?v=titlein"></script>
+    <script src="./js/projects.js?v=detail"></script>
+    <script src="./js/gallery.js?v=labels"></script>
     <script src="./js/contact.js"></script>
+    <script src="./js/contact-modal.js"></script>
     <script src="./js/footer.js"></script>
   </body>
 </html>

@@ -1,0 +1,128 @@
+.contact-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.contact-modal[hidden] {
+  display: none;
+}
+
+.contact-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.38);
+}
+
+.contact-modal-card {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  width: min(100%, 400px);
+  padding: 40px 36px 36px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.14);
+  color: #111;
+  outline: none;
+}
+
+.contact-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.contact-modal-close span {
+  position: absolute;
+  left: 8px;
+  top: 15px;
+  width: 16px;
+  height: 1.5px;
+  background: #111;
+}
+
+.contact-modal-close span:first-child {
+  transform: rotate(45deg);
+}
+
+.contact-modal-close span:last-child {
+  transform: rotate(-45deg);
+}
+
+.contact-modal-card h2 {
+  font-family: Pretendard, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.contact-modal-copy {
+  margin-top: 22px;
+  font-family: Pretendard, "Apple SD Gothic Neo", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #555;
+}
+
+.contact-modal-list {
+  display: grid;
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.contact-modal-list dt {
+  font-family: Pretendard, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #888;
+}
+
+.contact-modal-list dd {
+  margin-top: 6px;
+  font-family: Pretendard, "Apple SD Gothic Neo", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.4;
+}
+
+.contact-modal-list a {
+  color: #111;
+}
+
+body.contact-modal-open {
+  overflow: hidden;
+}
+
+@media (max-width: 767px) {
+  .contact-modal {
+    padding: 20px;
+  }
+
+  .contact-modal-card {
+    width: 100%;
+    padding: 36px 24px 28px;
+    border-radius: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-modal-card,
+  .contact-modal-overlay {
+    transition: none;
+  }
+}
