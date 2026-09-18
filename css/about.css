@@ -5,7 +5,11 @@
   height: 100vh;
   min-height: 100vh;
   overflow: visible;
-  background: #3c3c3c;
+  background-color: #8ed0f5;
+  background-image: url("../assets/images/background.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
   --page-count: 8;
   --book-page-count: 6;
   --book-spine: #c9bea9;

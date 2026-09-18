@@ -41,6 +41,125 @@
   z-index: 1;
 }
 
+.about-stickers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.section-stickers {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.about-sticker {
+  --sticker-rotation: 0deg;
+  position: absolute;
+  display: block;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  opacity: 0;
+  transform: rotate(var(--sticker-rotation)) scale(1);
+  transform-origin: center;
+}
+
+.about-sticker.is-visible {
+  animation: about-sticker-press 0.36s cubic-bezier(0.2, 0.8, 0.25, 1.15) forwards;
+}
+
+.sticker-top-pink {
+  --sticker-rotation: -11deg;
+  top: 164px;
+  left: clamp(30px, 8vw, 120px);
+  width: 72px;
+  height: 72px;
+}
+
+.sticker-mark-pink {
+  --sticker-rotation: 8deg;
+  top: 24%;
+  left: calc(50% - 360px);
+  width: 58px;
+  height: 58px;
+}
+
+.sticker-mark-blue {
+  --sticker-rotation: -9deg;
+  right: calc(50% - 365px);
+  bottom: 18%;
+  width: 52px;
+  height: 52px;
+}
+
+.sticker-mark-yellow {
+  --sticker-rotation: -5deg;
+  top: 12%;
+  right: calc(50% - 350px);
+  width: 44px;
+  height: 44px;
+}
+
+.sticker-profile-pink {
+  --sticker-rotation: -7deg;
+  top: -78px;
+  right: clamp(48px, 8vw, 128px);
+  width: 58px;
+  height: 58px;
+}
+
+.sticker-profile-yellow {
+  --sticker-rotation: 10deg;
+  top: -42px;
+  right: clamp(138px, 18vw, 280px);
+  width: 44px;
+  height: 44px;
+}
+
+.sticker-skill-blue {
+  --sticker-rotation: 7deg;
+  top: -88px;
+  left: clamp(48px, 8vw, 128px);
+  width: 56px;
+  height: 56px;
+}
+
+.sticker-skill-yellow {
+  --sticker-rotation: -10deg;
+  top: -48px;
+  left: clamp(138px, 18vw, 280px);
+  width: 42px;
+  height: 42px;
+}
+
+@keyframes about-sticker-press {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px)
+      rotate(calc(var(--sticker-rotation) - 8deg)) scale(1.15);
+  }
+  48% {
+    opacity: 1;
+    transform: translateY(2px)
+      rotate(calc(var(--sticker-rotation) + 2deg)) scale(0.95);
+  }
+  72% {
+    transform: translateY(-1px) rotate(var(--sticker-rotation)) scale(1.035);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(var(--sticker-rotation)) scale(1);
+  }
+}
+
 .about-page .footer {
   position: relative;
   z-index: 2;
@@ -79,6 +198,7 @@
 }
 
 .about-mark {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -177,6 +297,7 @@
 }
 
 .about-profile {
+  position: relative;
   width: 100%;
   margin-top: 120px;
   padding: 24px 0 8px;
@@ -194,7 +315,7 @@
 .profile-content {
   display: grid;
   grid-template-columns: 320px minmax(0, 1fr);
-  column-gap: 120px;
+  column-gap: 64px;
   row-gap: 48px;
   align-items: start;
 }
@@ -203,9 +324,11 @@
   width: 320px;
 }
 
-.profile-right {
+.profile-history {
   min-width: 0;
-  width: 100%;
+  width: min(100%, 560px);
+  justify-self: end;
+  text-align: left;
 }
 
 .profile-photo {
@@ -282,6 +405,7 @@
 }
 
 .about-skill {
+  position: relative;
   width: 100%;
   margin-top: 128px;
   padding: 8px 0 24px;
@@ -364,6 +488,16 @@
 }
 
 @media (max-width: 1023px) {
+  .section-stickers {
+    display: none;
+  }
+
+  .sticker-top-pink {
+    left: 34px;
+    width: 56px;
+    height: 56px;
+  }
+
   .profile-container {
     padding: 0 32px;
   }
@@ -375,6 +509,10 @@
 
   .profile-left {
     width: 220px;
+  }
+
+  .profile-history {
+    width: min(100%, 520px);
   }
 
   .profile-photo {
@@ -392,6 +530,10 @@
 }
 
 @media (max-width: 767px) {
+  .about-stickers {
+    display: none;
+  }
+
   .about-main {
     padding-top: 104px;
   }
@@ -464,5 +606,12 @@
   .skill-icons img {
     width: 44px;
     height: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-sticker {
+    opacity: 1;
+    animation: none;
   }
 }

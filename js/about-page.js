@@ -2,6 +2,81 @@ function prefersReducedMotion() {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
 
+function initStickerGroups() {
+  const stickers = Array.from(document.querySelectorAll(".about-sticker"));
+  if (!stickers.length) return;
+
+  const reveal = (sticker) => {
+    sticker.classList.add("is-visible");
+  };
+
+  if (prefersReducedMotion() || !("IntersectionObserver" in window)) {
+    stickers.forEach(reveal);
+    return;
+  }
+
+  const scrollStickers = stickers.filter((sticker) => sticker.dataset.stickerScroll);
+  const observedStickers = stickers.filter((sticker) => !sticker.dataset.stickerScroll);
+  const revealQueue = [];
+  let queueActive = false;
+
+  const flushQueue = () => {
+    const sticker = revealQueue.shift();
+    if (!sticker) {
+      queueActive = false;
+      return;
+    }
+
+    reveal(sticker);
+    window.setTimeout(flushQueue, 75);
+  };
+
+  const queueReveal = (sticker) => {
+    if (
+      sticker.classList.contains("is-visible") ||
+      revealQueue.includes(sticker)
+    ) {
+      return;
+    }
+
+    revealQueue.push(sticker);
+    if (!queueActive) {
+      queueActive = true;
+      flushQueue();
+    }
+  };
+
+  const revealScrollStickers = () => {
+    scrollStickers.forEach((sticker) => {
+      const triggerY = Number(sticker.dataset.stickerScroll) || 0;
+      if (window.scrollY >= triggerY) queueReveal(sticker);
+    });
+
+    if (scrollStickers.every((sticker) => sticker.classList.contains("is-visible"))) {
+      window.removeEventListener("scroll", revealScrollStickers);
+    }
+  };
+
+  window.addEventListener("scroll", revealScrollStickers, { passive: true });
+  revealScrollStickers();
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        queueReveal(entry.target);
+        observer.unobserve(entry.target);
+      });
+    },
+    {
+      threshold: 0.01,
+      rootMargin: "0px",
+    },
+  );
+
+  observedStickers.forEach((sticker) => observer.observe(sticker));
+}
+
 function initAboutPage() {
   if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
 
@@ -163,4 +238,7 @@ function initAboutPage() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", initAboutPage);
+document.addEventListener("DOMContentLoaded", () => {
+  initStickerGroups();
+  initAboutPage();
+});
