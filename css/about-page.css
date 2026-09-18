@@ -191,8 +191,8 @@
 
 .about-lead {
   margin-top: 22px;
-  font-size: 14px;
-  font-weight: 400;
+  font-size: clamp(14px, 1.04vw, 20px);
+  font-weight: 500;
   line-height: 1.95;
   color: var(--ink-soft);
 }
@@ -243,13 +243,15 @@
 
 .about-name-kicker {
   margin-top: 16px;
-  font-size: 13px;
+  font-size: clamp(13px, 0.84vw, 16px);
+  font-weight: 500;
   color: var(--ink-soft);
 }
 
 .about-name-copy {
   margin-top: 10px;
-  font-size: 13px;
+  font-size: clamp(13px, 0.84vw, 16px);
+  font-weight: 500;
   line-height: 1.8;
   color: var(--ink-soft);
 }
@@ -269,6 +271,7 @@
   min-height: 210px;
   padding: 28px 16px 24px;
   border: 1px solid var(--line);
+  border-radius: 12px;
   background: rgba(255, 255, 255, 0.22);
 }
 
@@ -315,9 +318,10 @@
 .profile-content {
   display: grid;
   grid-template-columns: 320px minmax(0, 1fr);
-  column-gap: 64px;
+  column-gap: clamp(180px, 17.92vw, 344px);
   row-gap: 48px;
   align-items: start;
+  width: 100%;
 }
 
 .profile-left {
@@ -326,8 +330,7 @@
 
 .profile-history {
   min-width: 0;
-  width: min(100%, 560px);
-  justify-self: end;
+  width: 100%;
   text-align: left;
 }
 
@@ -351,7 +354,7 @@
   grid-template-columns: 72px 1fr;
   gap: 16px;
   align-items: baseline;
-  font-size: 14px;
+  font-size: clamp(14px, 0.84vw, 16px);
   line-height: 1.5;
 }
 
@@ -371,9 +374,41 @@
   margin-bottom: 0;
 }
 
+.profile-education {
+  margin-top: 52px;
+  margin-bottom: 0;
+}
+
+.list.work-list li {
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.work-list .date {
+  flex-basis: 140px;
+  width: 140px;
+  white-space: nowrap;
+}
+
+.profile-history > .profile-work {
+  align-self: start;
+  margin-top: 0;
+}
+
+.work-place {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.work-description {
+  color: var(--ink);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
 .section-title {
   margin-bottom: 16px;
-  font-size: 16px;
+  font-size: clamp(16px, 0.94vw, 18px);
   font-weight: 700;
 }
 
@@ -387,7 +422,7 @@
   align-items: flex-start;
   gap: 24px;
   margin-bottom: 10px;
-  font-size: 14px;
+  font-size: clamp(14px, 0.84vw, 16px);
   line-height: 1.65;
   text-align: left;
 }
@@ -487,6 +522,21 @@
   object-fit: contain;
 }
 
+@media (max-width: 1199px) and (min-width: 1024px) {
+  .profile-container {
+    padding: 0 32px;
+  }
+
+  .profile-content {
+    grid-template-columns: 260px minmax(0, 1fr);
+    column-gap: 80px;
+  }
+
+  .profile-left {
+    width: 260px;
+  }
+}
+
 @media (max-width: 1023px) {
   .section-stickers {
     display: none;
@@ -512,7 +562,7 @@
   }
 
   .profile-history {
-    width: min(100%, 520px);
+    width: 100%;
   }
 
   .profile-photo {
@@ -572,8 +622,16 @@
     width: 100%;
   }
 
+  .profile-history {
+    width: 100%;
+  }
+
   .profile-photo {
     width: 200px;
+  }
+
+  .profile-education {
+    margin-top: 40px;
   }
 
   .list li {

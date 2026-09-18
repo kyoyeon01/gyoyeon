@@ -99,25 +99,81 @@ function initHeaderScroll() {
   if (!header) return;
 
   const topBoundary = 20;
-  const directionThreshold = 6;
+  const directionChangeThreshold = 4;
+  const hideDownDistance = 8;
+  const showUpDistance = 14;
+  const hideLongUpDistance = 450;
   let lastY = Math.max(0, window.scrollY);
+  let direction = null;
+  let directionDistance = 0;
+  let pendingDirection = null;
+  let pendingDistance = 0;
+  let revealedWhileScrollingUp = false;
   let ticking = false;
 
   const updateHeader = () => {
     const currentY = Math.max(0, window.scrollY);
     const delta = currentY - lastY;
+    lastY = currentY;
 
     if (currentY <= topBoundary) {
       header.classList.remove("is-header-hidden");
-    } else if (delta > directionThreshold) {
-      header.classList.add("is-header-hidden");
-    } else if (delta < -directionThreshold) {
-      header.classList.remove("is-header-hidden");
+      direction = null;
+      directionDistance = 0;
+      pendingDirection = null;
+      pendingDistance = 0;
+      revealedWhileScrollingUp = false;
+      ticking = false;
+      return;
     }
 
-    if (Math.abs(delta) >= directionThreshold || currentY <= topBoundary) {
-      lastY = currentY;
+    if (Math.abs(delta) < 1) {
+      ticking = false;
+      return;
     }
+
+    const nextDirection = delta > 0 ? "down" : "up";
+
+    if (nextDirection !== direction) {
+      if (pendingDirection !== nextDirection) {
+        pendingDirection = nextDirection;
+        pendingDistance = 0;
+      }
+      pendingDistance += Math.abs(delta);
+
+      if (pendingDistance < directionChangeThreshold) {
+        ticking = false;
+        return;
+      }
+
+      direction = nextDirection;
+      directionDistance = pendingDistance;
+      pendingDirection = null;
+      pendingDistance = 0;
+      revealedWhileScrollingUp = false;
+    } else {
+      directionDistance += Math.abs(delta);
+      pendingDirection = null;
+      pendingDistance = 0;
+    }
+
+    if (direction === "down" && directionDistance >= hideDownDistance) {
+      header.classList.add("is-header-hidden");
+    } else if (direction === "up") {
+      if (
+        !revealedWhileScrollingUp &&
+        directionDistance >= showUpDistance
+      ) {
+        header.classList.remove("is-header-hidden");
+        revealedWhileScrollingUp = true;
+      } else if (
+        revealedWhileScrollingUp &&
+        directionDistance >= hideLongUpDistance
+      ) {
+        header.classList.add("is-header-hidden");
+      }
+    }
+
     ticking = false;
   };
 

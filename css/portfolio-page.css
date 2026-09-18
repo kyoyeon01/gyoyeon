@@ -37,8 +37,9 @@
 }
 
 .works-tab {
+  --tab-color: #fff;
   padding: 8px 20px;
-  border: 1px solid rgba(17, 17, 17, 0.18);
+  border: 1px solid #c8c8c8;
   border-radius: 999px;
   background: #fff;
   color: #111;
@@ -47,12 +48,25 @@
   font-weight: 700;
   letter-spacing: 0.06em;
   line-height: 1;
+  transition: background-color 0.25s ease-out;
+}
+
+.works-tab[data-works-tab="WEB"] {
+  --tab-color: #fff07a;
+}
+
+.works-tab[data-works-tab="GRAPHIC"] {
+  --tab-color: #ff9ac8;
+}
+
+.works-tab[data-works-tab="PRODUCT"] {
+  --tab-color: #87cef3;
 }
 
 .works-tab.is-active {
-  border-color: #111;
-  background: #111;
-  color: #fff;
+  border-color: var(--tab-color);
+  background: var(--tab-color);
+  color: #111;
 }
 
 .works-viewport {
@@ -159,6 +173,11 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
+  .works-tab:hover {
+    border-color: var(--tab-color);
+    background: var(--tab-color);
+  }
+
   .works-arrow:not(:disabled):hover {
     border-color: #111;
   }
