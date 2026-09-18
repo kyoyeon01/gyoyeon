@@ -395,8 +395,13 @@
   margin-top: 0;
 }
 
+.work-place,
+.work-description {
+  display: inline;
+}
+
 .work-place {
-  font-weight: 700;
+  font-weight: inherit;
   white-space: nowrap;
 }
 

@@ -12,9 +12,9 @@
     />
     <link rel="stylesheet" href="./css/base.css?v=heading" />
     <link rel="stylesheet" href="./css/hero.css?v=header2" />
-    <link rel="stylesheet" href="./css/footer.css" />
+    <link rel="stylesheet" href="./css/footer.css?v=layout2" />
     <link rel="stylesheet" href="./css/contact-modal.css" />
-    <link rel="stylesheet" href="./css/about-page.css?v=work8" />
+    <link rel="stylesheet" href="./css/about-page.css?v=work9" />
   </head>
   <body class="about-page">
     <div class="about-sky" aria-hidden="true">
@@ -86,7 +86,7 @@
           <p class="about-lead" data-about-lead>
             다리 교와 고울 연을 모티브로<br />
             ‘연결’과 ‘아름다움’이라는 의미를<br />
-            시각적으로 풀어낸 포트폴리오 디자인입니다.
+            시각적으로 풀어낸 로고 디자인입니다.
           </p>
         </section>
 
@@ -263,35 +263,35 @@
                   <ul class="list work-list">
                     <li>
                       <span class="date">2021.07 ~ 2026.04</span>
-                      <p class="description">
-                        <strong class="work-place">CU 편의점</strong>
+                      <div class="description">
+                        <p class="work-place">CU 편의점</p>
                         <span class="work-separator" aria-hidden="true"> - </span>
-                        <span class="work-description">
+                        <p class="work-description">
                           고객 응대 및 계산 · 상품 진열 및 재고 관리
-                        </span>
-                      </p>
+                        </p>
+                      </div>
                     </li>
 
                     <li>
                       <span class="date">2024.05 ~ 2025.11</span>
-                      <p class="description">
-                        <strong class="work-place">드로잉 키즈카페</strong>
+                      <div class="description">
+                        <p class="work-place">드로잉 키즈카페</p>
                         <span class="work-separator" aria-hidden="true"> - </span>
-                        <span class="work-description">
+                        <p class="work-description">
                           어린이 프로그램 수업 진행 및 준비
-                        </span>
-                      </p>
+                        </p>
+                      </div>
                     </li>
 
                     <li>
                       <span class="date">2021.03 ~ 2022.08</span>
-                      <p class="description">
-                        <strong class="work-place">파스쿠찌</strong>
+                      <div class="description">
+                        <p class="work-place">파스쿠찌</p>
                         <span class="work-separator" aria-hidden="true"> - </span>
-                        <span class="work-description">
+                        <p class="work-description">
                           음료 제조 및 고객 응대 · 매장 마감 및 위생 관리
-                        </span>
-                      </p>
+                        </p>
+                      </div>
                     </li>
                   </ul>
                 </section>
@@ -466,19 +466,25 @@
 
     <footer class="footer">
       <div class="footer-inner">
-        <a class="footer-logo" href="./index.html" aria-label="홈">
-          <img src="./assets/images/logo_white.png" alt="" draggable="false" />
-        </a>
+        <div class="footer-top">
+          <a class="footer-logo" href="./index.html" aria-label="홈">
+            <img src="./assets/images/logo_white.png" alt="" draggable="false" />
+          </a>
+        </div>
         <hr class="footer-divider" />
         <div class="footer-row">
-          <p class="footer-desc">
-            사용자의 경험을 고민하고, 디자인으로 답을 찾아갑니다.<br />
-            새로운 환경에서 배우며 함께 성장하고 싶습니다.
-          </p>
+          <div class="footer-copy">
+            <p class="footer-desc">
+              사용자의 경험을 고민하고, 디자인으로 답을 찾아갑니다.<br />
+              새로운 환경에서 배우며 함께 성장하고 싶습니다.
+            </p>
+            <div class="footer-meta">
+              <p class="footer-email">Email. lee.gyoyeon@gmail.com</p>
+              <p class="footer-copyright">COPYRIGHT ©LEE GYO YEON. ALL RIGHTS RESERVED.</p>
+            </div>
+          </div>
           <div class="footer-socials" data-footer-socials></div>
         </div>
-        <p class="footer-email">Email. lee.gyoyeon@gmail.com</p>
-        <p class="footer-copyright">COPYRIGHT ©LEE GYO YEON. ALL RIGHTS RESERVED.</p>
       </div>
     </footer>
 
@@ -487,6 +493,6 @@
     <script src="./js/hero.js?v=header3"></script>
     <script src="./js/contact-modal.js"></script>
     <script src="./js/about-page.js?v=stickers5"></script>
-    <script src="./js/footer.js"></script>
+    <script src="./js/footer.js?v=layout1"></script>
   </body>
 </html>

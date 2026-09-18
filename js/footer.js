@@ -1,17 +1,17 @@
 const footerSocials = [
   {
     name: "Notion",
-    image: "./assets/images/icon_notion.svg",
+    image: "icon_notion.svg",
     url: "#",
   },
   {
     name: "GitHub",
-    image: "./assets/images/icon_github.svg",
+    image: "icon_github.svg",
     url: "#",
   },
   {
     name: "Behance",
-    image: "./assets/images/icon_behance.svg",
+    image: "icon_behance.svg",
     url: "#",
   },
 ];
@@ -19,6 +19,10 @@ const footerSocials = [
 function initFooter() {
   const list = document.querySelector("[data-footer-socials]");
   if (!list) return;
+  const logo = document.querySelector(".footer-logo img");
+  const assetBase = logo
+    ? new URL(".", logo.src)
+    : new URL("./assets/images/", document.baseURI);
 
   for (const item of footerSocials) {
     const link = document.createElement("a");
@@ -31,7 +35,7 @@ function initFooter() {
     }
 
     const img = document.createElement("img");
-    img.src = item.image;
+    img.src = new URL(item.image, assetBase).href;
     img.alt = "";
     img.draggable = false;
 
