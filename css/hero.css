@@ -5,7 +5,6 @@
   min-height: 100vh;
   overflow: hidden;
   background: #afdbfa;
-  isolation: isolate;
 }
 
 .cloud-sky {
@@ -19,7 +18,7 @@
 }
 
 .hero-header {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 20;
@@ -28,6 +27,13 @@
   justify-content: space-between;
   width: 100%;
   padding: 42px 92px 0;
+  transition: transform 0.28s ease-out;
+  will-change: transform;
+}
+
+.hero-header.is-header-hidden {
+  transform: translateY(-100%);
+  pointer-events: none;
 }
 
 .hero-logo {

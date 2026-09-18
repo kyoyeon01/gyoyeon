@@ -94,10 +94,54 @@ function updateStageScale() {
   stage.style.setProperty("--hero-scale", String(scale));
 }
 
+function initHeaderScroll() {
+  const header = document.querySelector(".hero-header");
+  if (!header) return;
+
+  const topBoundary = 20;
+  const directionThreshold = 6;
+  let lastY = Math.max(0, window.scrollY);
+  let ticking = false;
+
+  const updateHeader = () => {
+    const currentY = Math.max(0, window.scrollY);
+    const delta = currentY - lastY;
+
+    if (currentY <= topBoundary) {
+      header.classList.remove("is-header-hidden");
+    } else if (delta > directionThreshold) {
+      header.classList.add("is-header-hidden");
+    } else if (delta < -directionThreshold) {
+      header.classList.remove("is-header-hidden");
+    }
+
+    if (Math.abs(delta) >= directionThreshold || currentY <= topBoundary) {
+      lastY = currentY;
+    }
+    ticking = false;
+  };
+
+  const handleScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(updateHeader);
+  };
+
+  window.addEventListener("scroll", handleScroll, { passive: true });
+  updateHeader();
+
+  window.addEventListener(
+    "pagehide",
+    () => window.removeEventListener("scroll", handleScroll),
+    { once: true },
+  );
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   updateStageScale();
   initHeroParallax(document.querySelector(".hero"));
   initMobileMenu();
+  initHeaderScroll();
 });
 
 window.addEventListener("resize", updateStageScale);
