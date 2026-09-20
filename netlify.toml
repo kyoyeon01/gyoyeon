@@ -1,0 +1,7 @@
+# Static HTML (not an SPA). Pretty URLs should serve /portfolio/index.html.
+# Do not add a catch-all /* → /index.html rewrite.
+
+[[redirects]]
+  from = "/portfolio.html"
+  to = "/portfolio/"
+  status = 301
