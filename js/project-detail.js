@@ -3,6 +3,33 @@ function resetScrollTop() {
   window.scrollTo(0, 0);
 }
 
+function createExtButton(label, url) {
+  const href = typeof url === "string" ? url.trim() : "";
+  if (href) {
+    const link = document.createElement("a");
+    link.className = "project-ext-btn";
+    link.href = href;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = label;
+    return link;
+  }
+
+  const button = document.createElement("button");
+  button.className = "project-ext-btn";
+  button.type = "button";
+  button.disabled = true;
+  button.textContent = label;
+  return button;
+}
+
+function createExtRow(project) {
+  const row = document.createElement("div");
+  row.className = "project-ext-row";
+  row.append(createExtButton("WEB", project.webUrl), createExtButton("FIGMA", project.figmaUrl));
+  return row;
+}
+
 function renderProjectDetail(root, project) {
   root.replaceChildren();
 
@@ -16,6 +43,11 @@ function renderProjectDetail(root, project) {
 
   if (getProjectSlug(project) === "deepseaker") {
     root.classList.add("is-deepseaker");
+  }
+
+  if (project.category === "WEB") {
+    root.classList.add("is-web");
+    if (project.accent) root.style.setProperty("--project-accent", project.accent);
   }
 
   const files = project.detailImages || [];
@@ -34,6 +66,11 @@ function renderProjectDetail(root, project) {
   list.href = getPortfolioHref(project.category || "PRODUCT");
   list.textContent = "LIST";
   listWrap.append(list);
+
+  if (project.category === "WEB") {
+    root.append(createExtRow(project), images, listWrap);
+    return;
+  }
 
   root.append(images, listWrap);
 }

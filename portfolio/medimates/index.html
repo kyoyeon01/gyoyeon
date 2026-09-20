@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>교 · Project</title>
+    <link
+      rel="stylesheet"
+      as="style"
+      crossorigin
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
+    <link rel="stylesheet" href="../../css/base.css" />
+    <link rel="stylesheet" href="../../css/hero.css?v=header2" />
+    <link rel="stylesheet" href="../../css/footer.css?v=layout2" />
+    <link rel="stylesheet" href="../../css/contact-modal.css" />
+    <link rel="stylesheet" href="../../css/project-detail.css?v=ds-gap" />
+  </head>
+  <body class="project-page">
+    <header class="hero-header">
+      <a class="hero-logo" href="../../index.html" aria-label="홈">
+        <img src="../../assets/images/logo_black.svg" alt="" />
+      </a>
+
+      <nav class="hero-nav" aria-label="주요 메뉴">
+        <a href="../../about.html">ABOUT ME</a>
+        <a href="../">PORTFOLIO</a>
+        <a href="../../index.html#contact">CONTACT</a>
+      </nav>
+
+      <button
+        class="hero-menu-toggle"
+        type="button"
+        aria-label="메뉴 열기"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="hero-menu-panel" hidden>
+        <a href="../../about.html">ABOUT ME</a>
+        <a href="../">PORTFOLIO</a>
+        <a href="../../index.html#contact">CONTACT</a>
+      </div>
+    </header>
+
+    <main class="project-detail" data-project-detail></main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <a class="footer-logo" href="../../index.html" aria-label="홈">
+            <img src="../../assets/images/logo_white.png" alt="" draggable="false" />
+          </a>
+        </div>
+        <hr class="footer-divider" />
+        <div class="footer-row">
+          <div class="footer-copy">
+            <p class="footer-desc">
+              사용자의 경험을 고민하고, 디자인으로 답을 찾아갑니다.<br />
+              새로운 환경에서 배우며 함께 성장하고 싶습니다.
+            </p>
+            <div class="footer-meta">
+              <p class="footer-email">Email. lee.gyoyeon@gmail.com</p>
+              <p class="footer-copyright">COPYRIGHT ©LEE GYO YEON. ALL RIGHTS RESERVED.</p>
+            </div>
+          </div>
+          <div class="footer-socials" data-footer-socials></div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+    <script src="../../js/hero.js?v=header3"></script>
+    <script src="../../js/contact-modal.js"></script>
+    <script src="../../js/projects.js?v=medimates-detail"></script>
+    <script src="../../js/project-detail.js?v=medimates-detail"></script>
+    <script src="../../js/footer.js?v=layout1"></script>
+  </body>
+</html>
