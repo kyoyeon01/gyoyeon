@@ -41,9 +41,10 @@ function initPortfolioPage() {
 
     if (item.thumbnail) {
       const img = document.createElement("img");
-      img.src = siteAssetUrl(item.thumbnail);
-      img.alt = "";
-      img.draggable = false;
+      applyProjectImage(img, item.thumbnail, {
+        alt: "",
+        sizes: PROJECT_WORKS_THUMB_SIZES,
+      });
       thumb.append(img);
     }
 
@@ -76,7 +77,7 @@ function initPortfolioPage() {
       if (!first) return 0;
       const styles = getComputedStyle(track);
       const gap = Number.parseFloat(styles.columnGap || styles.gap) || 0;
-      return -(first.getBoundingClientRect().width + gap) * index;
+      return -Math.round((first.getBoundingClientRect().width + gap) * index);
     })();
 
     if (typeof gsap === "undefined") {

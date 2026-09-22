@@ -24,6 +24,8 @@
   width: 100%;
   height: auto;
   max-width: none;
+  image-rendering: auto;
+  image-rendering: high-quality;
 }
 
 .project-detail.is-contained .project-images {
@@ -45,6 +47,8 @@
   padding: 0;
   object-fit: contain;
   object-position: center top;
+  image-rendering: auto;
+  image-rendering: high-quality;
 }
 
 @media (max-width: 1199px) {

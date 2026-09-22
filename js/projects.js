@@ -139,12 +139,21 @@ const PROJECTS = [
     description: "",
   },
   {
-    title: "NOT YET",
+    title: "MEDIPOP",
     category: "GRAPHIC",
-    thumbnail: "",
-    detailRoute: "",
-    detailImages: [],
-    description: "",
+    thumbnail: "assets/images/projects/medipop/메디팝업_썸네일.png",
+    detailRoute: "/portfolio/medipop",
+    detailContained: true,
+    detailImages: [
+      "assets/images/projects/medipop/medi1.jpg",
+      "assets/images/projects/medipop/medi 2.jpg",
+      "assets/images/projects/medipop/medi 3.jpg",
+      "assets/images/projects/medipop/medi 4.jpg",
+      "assets/images/projects/medipop/medi 5.jpg",
+      "assets/images/projects/medipop/medi 6.jpg",
+      "assets/images/projects/medipop/medi 7.jpg",
+    ],
+    description: "이동식 의료 서비스 브랜드 디자인",
   },
   {
     title: "NOT YET",
@@ -171,6 +180,108 @@ const PROJECTS = [
     description: "",
   },
 ];
+
+const PROJECT_IMAGE_SIZE = {
+  "assets/images/projects/deepseaker/de1.png": [5760, 3240],
+  "assets/images/projects/deepseaker/de2.png": [5760, 3240],
+  "assets/images/projects/deepseaker/de3.png": [5760, 3240],
+  "assets/images/projects/deepseaker/de4.png": [5760, 3240],
+  "assets/images/projects/deepseaker/de5.png": [5760, 3240],
+  "assets/images/projects/deepseaker/de6.png": [5760, 3240],
+  "assets/images/projects/deepseaker/de7.png": [5760, 3240],
+  "assets/images/projects/deepseaker.jpg": [875, 1024],
+  "assets/images/projects/fruen/brand.png": [5760, 3240],
+  "assets/images/projects/fruen/complete.png": [5760, 3240],
+  "assets/images/projects/fruen/main.png": [5760, 3240],
+  "assets/images/projects/fruen.png": [1755, 2052],
+  "assets/images/projects/geuru/brand.png": [5760, 3240],
+  "assets/images/projects/geuru/complete.png": [5760, 3240],
+  "assets/images/projects/geuru/main.png": [5760, 3240],
+  "assets/images/projects/geuru.png": [1755, 2052],
+  "assets/images/projects/medimates/m1.png": [5760, 3240],
+  "assets/images/projects/medimates/m2.png": [5760, 3240],
+  "assets/images/projects/medimates/m3.png": [5760, 3240],
+  "assets/images/projects/medimates/m4.png": [5760, 3240],
+  "assets/images/projects/medimates/m5.png": [5760, 4959],
+  "assets/images/projects/medimates/m6.png": [5760, 3240],
+  "assets/images/projects/medimates/m7.png": [5760, 3240],
+  "assets/images/projects/medimates/m8.png": [5760, 3240],
+  "assets/images/projects/medimates/m9.png": [5760, 3240],
+  "assets/images/projects/medimates.png": [1755, 2052],
+  "assets/images/projects/medipop/medi 2.jpg": [1024, 576],
+  "assets/images/projects/medipop/medi 3.jpg": [1024, 576],
+  "assets/images/projects/medipop/medi 4.jpg": [1024, 576],
+  "assets/images/projects/medipop/medi 5.jpg": [1024, 576],
+  "assets/images/projects/medipop/medi 6.jpg": [1024, 576],
+  "assets/images/projects/medipop/medi 7.jpg": [1024, 576],
+  "assets/images/projects/medipop/medi1.jpg": [1024, 576],
+  "assets/images/projects/medipop/메디팝업_썸네일.png": [875, 1024],
+  "assets/images/projects/ongjin/brand.png": [5760, 3240],
+  "assets/images/projects/ongjin/complete.png": [5760, 3240],
+  "assets/images/projects/ongjin/main.png": [5760, 3240],
+  "assets/images/projects/ongjin.png": [1755, 2052],
+  "assets/images/projects/pawong/p1.png": [5760, 3240],
+  "assets/images/projects/pawong/p2.png": [5760, 3240],
+  "assets/images/projects/pawong/p3.png": [5760, 3240],
+  "assets/images/projects/pawong/p4.png": [5760, 3240],
+  "assets/images/projects/pawong/p5.png": [5760, 3240],
+  "assets/images/projects/pawong/p6.png": [5760, 3240],
+  "assets/images/projects/pawong.png": [874, 1024],
+  "assets/images/projects/rescue-x/dr 5.png": [1024, 576],
+  "assets/images/projects/rescue-x/dr 6.png": [1024, 576],
+  "assets/images/projects/rescue-x/dr1.png": [1024, 576],
+  "assets/images/projects/rescue-x/dr10.png": [1024, 576],
+  "assets/images/projects/rescue-x/dr11.png": [1024, 576],
+  "assets/images/projects/rescue-x/dr2.png": [1024, 576],
+  "assets/images/projects/rescue-x/dr3.png": [1024, 576],
+  "assets/images/projects/rescue-x/dr4.png": [1024, 576],
+  "assets/images/projects/rescue-x/dr7.png": [1024, 576],
+  "assets/images/projects/rescue-x/dr8.png": [1024, 576],
+  "assets/images/projects/rescue-x/dr9.png": [1024, 576],
+  "assets/images/projects/rescue-x/dr_썸네일.png": [875, 1024],
+};
+
+const PROJECT_THUMB_SIZES =
+  "(max-width: 767px) min(48vw, 180px), (max-width: 1199px) min(41.3vw, 413px), min(28.66vw, 550px)";
+const PROJECT_WORKS_THUMB_SIZES =
+  "(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) calc((100vw - 108px) / 2), calc((min(1440px, 100vw) - 268px) / 4)";
+const PROJECT_DETAIL_SIZES =
+  "(max-width: 767px) calc(100vw - 40px), (max-width: 1199px) calc(100vw - 80px), min(1256px, calc(100vw - 184px))";
+
+function projectImageKey(path) {
+  return String(path || "")
+    .replace(/^\.\//, "")
+    .replace(/\?.*$/, "");
+}
+
+function encodeAssetPath(path) {
+  return String(path || "")
+    .split("/")
+    .map((segment) => {
+      if (!segment || segment === "." || segment === "..") return segment;
+      const q = segment.indexOf("?");
+      if (q === -1) return encodeURIComponent(segment);
+      return `${encodeURIComponent(segment.slice(0, q))}?${segment.slice(q + 1)}`;
+    })
+    .join("/");
+}
+
+function applyProjectImage(img, path, options = {}) {
+  const url = siteAssetUrl(path);
+  const size = PROJECT_IMAGE_SIZE[projectImageKey(path)];
+  img.src = url;
+  img.draggable = false;
+  img.decoding = options.decoding || "async";
+  if (options.alt != null) img.alt = options.alt;
+  if (options.loading) img.loading = options.loading;
+  if (options.fetchPriority) img.setAttribute("fetchpriority", options.fetchPriority);
+  if (size) {
+    img.width = size[0];
+    img.height = size[1];
+    img.srcset = `${url} ${size[0]}w`;
+    if (options.sizes) img.sizes = options.sizes;
+  }
+}
 
 function getProjectSlug(project) {
   return String(project.detailRoute || "")
@@ -208,7 +319,7 @@ function getPortfolioHref(category) {
 
 function siteAssetUrl(path) {
   if (!path) return "";
-  const clean = path.replace(/^\.\//, "");
+  const clean = encodeAssetPath(path.replace(/^\.\//, ""));
   if (isProjectDetailPath()) return `../../${clean}`;
   if (isPortfolioIndexPath()) return `../${clean}`;
   return `./${clean}`;

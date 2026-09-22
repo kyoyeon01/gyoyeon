@@ -53,9 +53,12 @@ function renderProjectDetail(root, project) {
   const files = project.detailImages || [];
   files.forEach((src, index) => {
     const img = document.createElement("img");
-    img.src = siteAssetUrl(src);
-    img.alt = index === 0 ? project.title : `${project.title} ${index + 1}`;
-    img.draggable = false;
+    applyProjectImage(img, src, {
+      alt: index === 0 ? project.title : `${project.title} ${index + 1}`,
+      sizes: PROJECT_DETAIL_SIZES,
+      decoding: index === 0 ? "sync" : "async",
+      fetchPriority: index === 0 ? "high" : undefined,
+    });
     images.append(img);
   });
 

@@ -24,14 +24,15 @@ function createGalleryCard(project, options = {}) {
   tag.className = "gallery-card__tag";
   tag.textContent = project.category;
 
-  if (project.thumbnail) {
-    const img = document.createElement("img");
-    img.alt = options.hidden ? "" : project.title;
-    img.draggable = false;
-    img.src = siteAssetUrl(project.thumbnail);
-    const attachImage = () => {
-      if (img.naturalWidth && !thumb.contains(img)) thumb.appendChild(img);
-    };
+    if (project.thumbnail) {
+      const img = document.createElement("img");
+      applyProjectImage(img, project.thumbnail, {
+        alt: options.hidden ? "" : project.title,
+        sizes: PROJECT_THUMB_SIZES,
+      });
+      const attachImage = () => {
+        if (img.naturalWidth && !thumb.contains(img)) thumb.appendChild(img);
+      };
     if (img.complete) attachImage();
     else img.addEventListener("load", attachImage);
   }
