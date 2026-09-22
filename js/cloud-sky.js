@@ -193,12 +193,19 @@ function initCloudSky() {
   const hero = canvas?.closest(".hero");
   if (!canvas || !hero) return;
 
-  const gl = canvas.getContext("webgl", {
-    alpha: false,
-    antialias: false,
-    depth: false,
-    powerPreference: "high-performance",
-  });
+  const gl =
+    canvas.getContext("webgl", {
+      alpha: false,
+      antialias: false,
+      depth: false,
+      failIfMajorPerformanceCaveat: false,
+    }) ||
+    canvas.getContext("experimental-webgl", {
+      alpha: false,
+      antialias: false,
+      depth: false,
+    }) ||
+    canvas.getContext("webgl");
   if (!gl) return;
 
   const vertex = compileCloudShader(gl, gl.VERTEX_SHADER, CLOUD_SKY_VERTEX);

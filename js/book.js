@@ -27,8 +27,6 @@ function initBook() {
     window.innerHeight / 2 - (about.offsetTop + about.offsetHeight / 2);
 
   gsap.set(stage, {
-    xPercent: -50,
-    yPercent: -50,
     y: reducedMotion ? 0 : heroOffset,
     scale: reducedMotion ? 1 : 1.14,
     transformOrigin: "50% 50%",
@@ -144,7 +142,7 @@ function initBook() {
       flipTimeline.to(
         stage,
         {
-          xPercent: 0,
+          xPercent: 50,
           duration: 1,
         },
         flipStart,

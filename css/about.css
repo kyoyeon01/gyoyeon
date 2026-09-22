@@ -17,18 +17,29 @@
   --page: #ffffff;
 }
 
-.book-stage {
+.book-frame {
   position: absolute;
-  left: 50%;
+  left: 0;
+  right: 0;
   top: 50%;
   z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.book-stage {
+  position: relative;
   width: 45vh;
   height: 60vh;
   min-width: 150px;
   min-height: 200px;
   pointer-events: none;
   perspective: 1200px;
-  transform: translate(-50%, -50%) scale(1.14);
+  perspective-origin: 50% 50%;
   transform-origin: 50% 50%;
   will-change: transform;
 }
@@ -196,7 +207,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .book-stage {
-    transform: translate(-50%, -50%) scale(1);
+    transform: none;
   }
 
   .about .section-heading {
