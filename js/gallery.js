@@ -59,6 +59,174 @@ function getLoopWidth(track) {
   return group ? group.offsetWidth : 0;
 }
 
+const GALLERY_EXPAND = 1.204;
+const GALLERY_HOVER_DURATION = 0.55;
+const GALLERY_HOVER_EASE = "cubic-bezier(0.16, 1, 0.3, 1)";
+const GALLERY_EDGE_PAD = 8;
+const GALLERY_LIFT = 18;
+
+function canUseGalleryHover() {
+  return (
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches &&
+    window.matchMedia("(hover: hover)").matches &&
+    window.matchMedia("(pointer: fine)").matches
+  );
+}
+
+function initGalleryHover(section, shiftLayer) {
+  if (typeof gsap === "undefined" || !canUseGalleryHover()) return;
+
+  const cards = Array.from(section.querySelectorAll(".gallery-card"));
+  let active = null;
+  let hoverTween = null;
+
+  const cardBaseWidth = (card) => {
+    const stored = Number(card.dataset.baseWidth);
+    if (stored) return stored;
+    const width = card.getBoundingClientRect().width;
+    card.dataset.baseWidth = String(width);
+    return width;
+  };
+
+  const expandFactor = (card) => {
+    const baseWidth = cardBaseWidth(card);
+    const bounds = section.getBoundingClientRect();
+    const rect = card.getBoundingClientRect();
+    const title = card.querySelector(".gallery-card__title");
+    const titleH = title ? title.getBoundingClientRect().height : 0;
+    const desiredThumbH = baseWidth * GALLERY_EXPAND * 1.25;
+    const desiredCardH = titleH + 10 + desiredThumbH;
+    const available = bounds.bottom - rect.top - GALLERY_EDGE_PAD + GALLERY_LIFT;
+    if (desiredCardH <= available) return GALLERY_EXPAND;
+    const maxThumbH = available - titleH - 10;
+    if (maxThumbH <= 0) return 1;
+    return Math.max(1, Math.min(GALLERY_EXPAND, maxThumbH / (baseWidth * 1.25)));
+  };
+
+  const hoverShift = (card) => {
+    const bounds = section.getBoundingClientRect();
+    const rect = card.getBoundingClientRect();
+    const baseWidth = cardBaseWidth(card);
+    const expandedWidth = baseWidth * expandFactor(card);
+    const leftLimit = bounds.left + GALLERY_EDGE_PAD;
+    const rightLimit = bounds.right - GALLERY_EDGE_PAD;
+    const currentX = Number(gsap.getProperty(shiftLayer, "x")) || 0;
+
+    let delta = 0;
+    if (rect.left < leftLimit) delta += leftLimit - rect.left;
+
+    const nextRight = rect.left + delta + expandedWidth;
+    if (nextRight > rightLimit) delta -= nextRight - rightLimit;
+
+    const nextLeft = rect.left + delta;
+    if (nextLeft < leftLimit) delta += leftLimit - nextLeft;
+
+    return {
+      shift: currentX + delta,
+      leftClipped: rect.left < bounds.left - 1,
+    };
+  };
+
+  const play = (card) => {
+    if (hoverTween) hoverTween.kill();
+
+    cards.forEach((item) => {
+      if (item === card) return;
+      item.classList.remove("is-expanded");
+      const base = Number(item.dataset.baseWidth);
+      if (base) gsap.set(item, { width: base });
+    });
+
+    const baseWidth = cardBaseWidth(card);
+    const factor = expandFactor(card);
+    const { shift, leftClipped } = hoverShift(card);
+    card.classList.add("is-expanded");
+    gsap.set(card, { width: baseWidth });
+
+    hoverTween = gsap.timeline({ overwrite: true, defaults: { ease: GALLERY_HOVER_EASE } });
+
+    if (leftClipped && shift > 1) {
+      hoverTween
+        .to(shiftLayer, { x: shift, duration: GALLERY_HOVER_DURATION }, 0)
+        .fromTo(
+          card,
+          { width: baseWidth },
+          { width: baseWidth * factor, duration: GALLERY_HOVER_DURATION },
+          0.12,
+        );
+    } else {
+      hoverTween
+        .to(shiftLayer, { x: shift, duration: GALLERY_HOVER_DURATION }, 0)
+        .fromTo(
+          card,
+          { width: baseWidth },
+          { width: baseWidth * factor, duration: GALLERY_HOVER_DURATION },
+          0,
+        );
+    }
+  };
+
+  const reset = () => {
+    if (hoverTween) hoverTween.kill();
+    hoverTween = gsap.timeline({ overwrite: true, defaults: { ease: GALLERY_HOVER_EASE } });
+
+    cards.forEach((card) => {
+      card.classList.remove("is-expanded");
+      const base = Number(card.dataset.baseWidth);
+      if (base) hoverTween.to(card, { width: base, duration: GALLERY_HOVER_DURATION }, 0);
+    });
+
+    hoverTween.to(shiftLayer, { x: 0, duration: GALLERY_HOVER_DURATION }, 0);
+    hoverTween.add(() => {
+      cards.forEach((card) => gsap.set(card, { width: "" }));
+    });
+  };
+
+  const cardFromPoint = (x, y) => {
+    const stack = document.elementsFromPoint(x, y);
+    for (const node of stack) {
+      const card = node.closest?.(".gallery-card");
+      if (card && section.contains(card)) return card;
+    }
+    return null;
+  };
+
+  const syncHover = (x, y) => {
+    if (!canUseGalleryHover()) return;
+    const card = cardFromPoint(x, y);
+    if (card === active) return;
+
+    if (!card) {
+      if (!active) return;
+      active = null;
+      reset();
+      return;
+    }
+
+    active = card;
+    play(card);
+  };
+
+  let lastX = null;
+  let lastY = null;
+
+  section.addEventListener("pointermove", (event) => {
+    if (event.pointerType && event.pointerType !== "mouse") return;
+    if (lastX === event.clientX && lastY === event.clientY) return;
+    lastX = event.clientX;
+    lastY = event.clientY;
+    syncHover(event.clientX, event.clientY);
+  });
+
+  section.addEventListener("pointerleave", () => {
+    lastX = null;
+    lastY = null;
+    if (!active) return;
+    active = null;
+    reset();
+  });
+}
+
 function initHorizontalGallery(section, track) {
   if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") {
     return;
@@ -90,8 +258,12 @@ function initGallery() {
   const track = document.querySelector("[data-gallery-track]");
   if (!section || !track) return;
 
-  track.append(createGalleryGroup(false), createGalleryGroup(true));
+  const shiftLayer = document.createElement("div");
+  shiftLayer.className = "gallery-hover-shift";
+  shiftLayer.append(createGalleryGroup(false), createGalleryGroup(true));
+  track.append(shiftLayer);
   initHorizontalGallery(section, track);
+  initGalleryHover(section, shiftLayer);
 }
 
 document.addEventListener("DOMContentLoaded", initGallery);

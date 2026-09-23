@@ -67,6 +67,40 @@ a {
   user-select: none;
 }
 
+.section-heading:has(+ .section-lead) {
+  margin-bottom: 12px;
+}
+
+.section-lead {
+  position: relative;
+  z-index: 12;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 42em;
+  margin: 0 auto 40px;
+  padding: 0 24px;
+  font-family: Pretendard, "Apple SD Gothic Neo", sans-serif;
+  font-size: clamp(14px, 1.35vw, 16px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.6;
+  text-align: center;
+  color: #111;
+  pointer-events: none;
+  user-select: none;
+}
+
+.contact .section-lead {
+  color: #fff;
+}
+
+@media (max-width: 767px) {
+  .section-lead {
+    margin-bottom: 28px;
+    padding: 0 20px;
+  }
+}
+
 .about,
 .gallery,
 .contact {

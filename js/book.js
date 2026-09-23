@@ -77,7 +77,7 @@ function initBook() {
     })
     .to(stage, {
       y: 0,
-      scale: 1,
+      scale: 1.2,
     })
     .to(
       book,
