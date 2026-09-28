@@ -29,13 +29,10 @@ function createGalleryCard(project, options = {}) {
       applyProjectImage(img, project.thumbnail, {
         alt: options.hidden ? "" : project.title,
         sizes: PROJECT_THUMB_SIZES,
+        loading: "lazy",
       });
-      const attachImage = () => {
-        if (img.naturalWidth && !thumb.contains(img)) thumb.appendChild(img);
-      };
-    if (img.complete) attachImage();
-    else img.addEventListener("load", attachImage);
-  }
+      thumb.appendChild(img);
+    }
 
   thumb.append(tag);
   card.append(titleEl, thumb);

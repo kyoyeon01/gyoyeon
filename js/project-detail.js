@@ -3,11 +3,12 @@ function resetScrollTop() {
   window.scrollTo(0, 0);
 }
 
-function createExtButton(label, url) {
+function createExtButton(label, url, variant) {
   const href = typeof url === "string" ? url.trim() : "";
+  const className = `project-ext-btn ${variant}`;
   if (href) {
     const link = document.createElement("a");
-    link.className = "project-ext-btn";
+    link.className = className;
     link.href = href;
     link.target = "_blank";
     link.rel = "noopener noreferrer";
@@ -16,7 +17,7 @@ function createExtButton(label, url) {
   }
 
   const button = document.createElement("button");
-  button.className = "project-ext-btn";
+  button.className = className;
   button.type = "button";
   button.disabled = true;
   button.textContent = label;
@@ -24,10 +25,57 @@ function createExtButton(label, url) {
 }
 
 function createExtRow(project) {
-  const row = document.createElement("div");
+  const row = document.createElement("section");
   row.className = "project-ext-row";
-  row.append(createExtButton("WEB", project.webUrl), createExtButton("FIGMA", project.figmaUrl));
+  row.setAttribute("aria-label", "Project links");
+
+  const label = document.createElement("p");
+  label.className = "project-ext-label";
+  label.textContent = "PROJECT LINKS";
+
+  const actions = document.createElement("div");
+  actions.className = "project-ext-actions";
+  actions.append(
+    createExtButton("VIEW WEBSITE ↗", project.webUrl, "is-website"),
+    createExtButton("VIEW FIGMA ↗", project.figmaUrl, "is-figma"),
+  );
+
+  row.append(label, actions);
   return row;
+}
+
+const WEB_CTA_THEME = {
+  fruen: {
+    "--cta-fill": "#ffd11f",
+    "--cta-fill-hover": "#e8bc12",
+    "--cta-on-fill": "#5c3a0e",
+    "--cta-line": "#8b5a1e",
+    "--cta-line-hover": "#6e4716",
+    "--cta-soft": "#fff6d6",
+  },
+  ongjin: {
+    "--cta-fill": "#2e7bc6",
+    "--cta-fill-hover": "#2469ab",
+    "--cta-on-fill": "#ffffff",
+    "--cta-line": "#2e7bc6",
+    "--cta-line-hover": "#2469ab",
+    "--cta-soft": "#e8f3fb",
+  },
+  geuru: {
+    "--cta-fill": "#1f8b58",
+    "--cta-fill-hover": "#187349",
+    "--cta-on-fill": "#ffffff",
+    "--cta-line": "#1f8b58",
+    "--cta-line-hover": "#187349",
+    "--cta-soft": "#e5f6ee",
+  },
+};
+
+function applyWebCtaTheme(root, project) {
+  const theme = WEB_CTA_THEME[getProjectSlug(project)] || WEB_CTA_THEME.ongjin;
+  Object.entries(theme).forEach(([name, value]) => {
+    root.style.setProperty(name, value);
+  });
 }
 
 function renderProjectDetail(root, project) {
@@ -47,7 +95,7 @@ function renderProjectDetail(root, project) {
 
   if (project.category === "WEB") {
     root.classList.add("is-web");
-    if (project.accent) root.style.setProperty("--project-accent", project.accent);
+    applyWebCtaTheme(root, project);
   }
 
   const files = project.detailImages || [];
@@ -58,6 +106,7 @@ function renderProjectDetail(root, project) {
       sizes: PROJECT_DETAIL_SIZES,
       decoding: index === 0 ? "sync" : "async",
       fetchPriority: index === 0 ? "high" : undefined,
+      loading: index === 0 ? undefined : "lazy",
     });
     images.append(img);
   });

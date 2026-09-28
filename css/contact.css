@@ -8,7 +8,7 @@
   height: clamp(520px, 42vw, 820px);
   overflow: hidden;
   background-color: #8a8a8a;
-  background-image: url("../assets/images/contact_bg.jpg");
+  background-image: url("../assets/images/contact_bg.webp?v=sr1");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

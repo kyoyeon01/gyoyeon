@@ -44,6 +44,8 @@ function initPortfolioPage() {
       applyProjectImage(img, item.thumbnail, {
         alt: "",
         sizes: PROJECT_WORKS_THUMB_SIZES,
+        loading: order < 4 ? undefined : "lazy",
+        fetchPriority: order === 0 ? "high" : undefined,
       });
       thumb.append(img);
     }

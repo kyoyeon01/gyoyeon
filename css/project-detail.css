@@ -13,6 +13,19 @@
 .project-detail {
   flex: 1;
   width: 100%;
+  padding-top: 72px;
+}
+
+@media (max-width: 1199px) {
+  .project-detail {
+    padding-top: 56px;
+  }
+}
+
+@media (max-width: 767px) {
+  .project-detail {
+    padding-top: 40px;
+  }
 }
 
 .project-images {
@@ -138,14 +151,32 @@
 
 .project-detail.is-web .project-ext-row {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  gap: 12px;
   box-sizing: border-box;
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 60px 92px 28px;
+  padding: 48px 92px 40px;
+}
+
+.project-ext-label {
+  margin: 0 0 28px;
+  color: #5a6570;
+  font-family: Pretendard, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.project-ext-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
 }
 
 .project-ext-btn {
@@ -153,23 +184,35 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 120px;
-  height: 44px;
-  padding: 0;
-  border: 1.5px solid var(--project-accent, #111);
+  min-height: 50px;
+  padding: 0 30px;
+  border: 1.5px solid transparent;
   border-radius: 999px;
-  background: #fff;
-  color: var(--project-accent, #111);
   font-family: Pretendard, sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   line-height: 1;
+  white-space: nowrap;
   text-decoration: none;
   cursor: pointer;
   transition:
     background-color 0.22s ease,
-    color 0.22s ease;
+    border-color 0.22s ease,
+    color 0.22s ease,
+    transform 0.22s ease;
+}
+
+.project-ext-btn.is-website {
+  background: var(--cta-fill, #2e7bc6);
+  border-color: var(--cta-fill, #2e7bc6);
+  color: var(--cta-on-fill, #fff);
+}
+
+.project-ext-btn.is-figma {
+  background: #fff;
+  border-color: var(--cta-line, #2e7bc6);
+  color: var(--cta-line, #2e7bc6);
 }
 
 .project-ext-btn:disabled {
@@ -178,27 +221,42 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-  a.project-ext-btn:hover,
-  .project-ext-btn:not(:disabled):hover {
-    background: var(--project-accent, #111);
-    color: #111;
+  a.project-ext-btn.is-website:hover,
+  .project-ext-btn.is-website:not(:disabled):hover {
+    background: var(--cta-fill-hover, #2469ab);
+    border-color: var(--cta-fill-hover, #2469ab);
+    color: var(--cta-on-fill, #fff);
+    transform: translateY(-2px);
+  }
+
+  a.project-ext-btn.is-figma:hover,
+  .project-ext-btn.is-figma:not(:disabled):hover {
+    background: var(--cta-soft, #e8f3fb);
+    border-color: var(--cta-line-hover, #2469ab);
+    color: var(--cta-line-hover, #2469ab);
+    transform: translateY(-2px);
   }
 }
 
 @media (max-width: 1199px) {
   .project-detail.is-web .project-ext-row {
-    padding: 60px 40px 24px;
+    padding: 48px 40px 36px;
   }
 }
 
 @media (max-width: 767px) {
   .project-detail.is-web .project-ext-row {
-    padding: 32px 20px 20px;
+    padding: 28px 20px 32px;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .project-ext-btn {
     transition: none;
+  }
+
+  a.project-ext-btn:hover,
+  .project-ext-btn:not(:disabled):hover {
+    transform: none;
   }
 }

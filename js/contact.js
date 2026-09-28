@@ -2,15 +2,15 @@ const CONTACT_EMAIL = "lee.gyoyeon@gmail.com";
 
 const contacts = [
   {
-    image: "./assets/images/contact1.png",
+    image: "./assets/images/contact1.webp",
     rotate: -7,
   },
   {
-    image: "./assets/images/contact2.png",
+    image: "./assets/images/contact2.webp",
     rotate: 6,
   },
   {
-    image: "./assets/images/contact3.png",
+    image: "./assets/images/contact3.webp",
     rotate: -4,
   },
 ];
@@ -30,6 +30,8 @@ function initContact() {
     img.src = item.image;
     img.alt = "";
     img.draggable = false;
+    img.loading = "lazy";
+    img.decoding = "async";
 
     link.appendChild(img);
     stage.appendChild(link);
