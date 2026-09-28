@@ -84,6 +84,22 @@
   height: 72px;
 }
 
+.sticker-top-blue {
+  --sticker-rotation: 9deg;
+  top: 92px;
+  right: clamp(36px, 7vw, 110px);
+  width: 40px;
+  height: 40px;
+}
+
+.sticker-top-yellow {
+  --sticker-rotation: -6deg;
+  top: 214px;
+  left: clamp(140px, 16vw, 248px);
+  width: 34px;
+  height: 34px;
+}
+
 .sticker-mark-pink {
   --sticker-rotation: 8deg;
   top: 24%;
@@ -108,6 +124,78 @@
   height: 44px;
 }
 
+.sticker-mark-pink-sm {
+  --sticker-rotation: -12deg;
+  bottom: 16%;
+  left: calc(50% - 300px);
+  width: 32px;
+  height: 32px;
+}
+
+.sticker-names-pink {
+  --sticker-rotation: 7deg;
+  top: 12px;
+  left: -72px;
+  width: 36px;
+  height: 36px;
+}
+
+.sticker-names-blue {
+  --sticker-rotation: -8deg;
+  bottom: 18px;
+  right: -64px;
+  width: 30px;
+  height: 30px;
+}
+
+.sticker-keys-yellow {
+  --sticker-rotation: 6deg;
+  top: -38px;
+  left: 10%;
+  width: 36px;
+  height: 36px;
+}
+
+.sticker-keys-pink {
+  --sticker-rotation: -9deg;
+  top: 42%;
+  left: -56px;
+  width: 32px;
+  height: 32px;
+}
+
+.sticker-keys-blue {
+  --sticker-rotation: 11deg;
+  top: 14%;
+  right: -52px;
+  width: 28px;
+  height: 28px;
+}
+
+.sticker-intro-pink {
+  --sticker-rotation: -7deg;
+  top: 16%;
+  left: clamp(16px, 4vw, 72px);
+  width: 34px;
+  height: 34px;
+}
+
+.sticker-intro-blue {
+  --sticker-rotation: 8deg;
+  top: 30%;
+  right: clamp(16px, 4vw, 72px);
+  width: 38px;
+  height: 38px;
+}
+
+.sticker-intro-yellow {
+  --sticker-rotation: -4deg;
+  top: 6%;
+  left: clamp(88px, 12vw, 168px);
+  width: 26px;
+  height: 26px;
+}
+
 .sticker-profile-pink {
   --sticker-rotation: -7deg;
   top: -78px;
@@ -124,6 +212,14 @@
   height: 44px;
 }
 
+.sticker-profile-blue {
+  --sticker-rotation: 5deg;
+  top: -58px;
+  left: clamp(48px, 8vw, 128px);
+  width: 34px;
+  height: 34px;
+}
+
 .sticker-skill-blue {
   --sticker-rotation: 7deg;
   top: -88px;
@@ -138,6 +234,14 @@
   left: clamp(138px, 18vw, 280px);
   width: 42px;
   height: 42px;
+}
+
+.sticker-skill-pink {
+  --sticker-rotation: 8deg;
+  top: -66px;
+  right: clamp(48px, 8vw, 128px);
+  width: 32px;
+  height: 32px;
 }
 
 @keyframes about-sticker-press {
@@ -213,6 +317,7 @@
 }
 
 .about-names {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: start;
@@ -257,6 +362,7 @@
 }
 
 .about-keys {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(18px, 3vw, 32px);
@@ -300,6 +406,7 @@
 }
 
 .about-intro {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;

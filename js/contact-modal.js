@@ -1,7 +1,8 @@
 const CONTACT_INFO = {
   email: "lee.gyoyeon@gmail.com",
   phone: "010-2427-0502",
-  message: "작업 및 협업 문의는 아래 연락처로 부탁드립니다.",
+  message:
+    "새로운 기회와 좋은 연결을 기다리고 있습니다.<br />함께할 수 있는 기회가 있다면 감사한 마음으로 연락 기다리겠습니다.",
 };
 
 function prefersReducedMotion() {

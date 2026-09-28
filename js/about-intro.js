@@ -40,7 +40,7 @@ function initAboutIntro() {
   if (typeof ScrollTrigger !== "undefined") {
     ScrollTrigger.create({
       trigger: section,
-      start: "top 78%",
+      start: "top 44%",
       once: true,
       onEnter: playOnce,
     });
@@ -58,7 +58,7 @@ function initAboutIntro() {
       playOnce();
       observer.disconnect();
     },
-    { threshold: 0.28 },
+    { threshold: 0.4, rootMargin: "0px 0px -18% 0px" },
   );
 
   observer.observe(section);

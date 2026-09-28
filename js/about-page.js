@@ -156,8 +156,8 @@ function initAboutPage() {
     const namesTl = gsap.timeline({
       scrollTrigger: {
         trigger: names,
-        start: "top 82%",
-        end: "top 48%",
+        start: "top 74%",
+        end: "top 44%",
         scrub: 0.85,
       },
     });
@@ -171,12 +171,12 @@ function initAboutPage() {
     gsap.to(keys, {
       opacity: 1,
       y: 0,
-      stagger: 0.14,
+      stagger: 0.16,
       ease: "none",
       scrollTrigger: {
         trigger: ".about-keys",
-        start: "top 86%",
-        end: "top 58%",
+        start: "top 66%",
+        end: "top 40%",
         scrub: 0.8,
       },
     });
