@@ -8,7 +8,7 @@
       rel="stylesheet"
       as="style"
       crossorigin
-      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css"
     />
     <link rel="stylesheet" href="./css/base.css?v=smooth1" />
     <link rel="stylesheet" href="./css/hero.css?v=header2" />
@@ -50,7 +50,7 @@
     <div class="about-shell">
       <header class="hero-header">
         <a class="hero-logo" href="./index.html" aria-label="홈">
-          <img src="./assets/images/logo_black.svg" alt="" />
+          <img src="./assets/images/logo_black.webp" alt="" />
         </a>
 
         <nav class="hero-nav" aria-label="주요 메뉴">
@@ -88,21 +88,21 @@
           src="./assets/images/about-star-pink.webp"
           alt=""
           draggable="false"
-        width="173" height="173" loading="lazy" decoding="async">
+        width="173" height="173" decoding="async">
         <img
           class="about-sticker sticker-top-blue"
           data-sticker-scroll="40"
           src="./assets/images/about-star-blue.webp"
           alt=""
           draggable="false"
-        width="159" height="159" loading="lazy" decoding="async">
+        width="159" height="159" decoding="async">
         <img
           class="about-sticker sticker-top-yellow"
           data-sticker-scroll="70"
           src="./assets/images/about-star-yellow.webp"
           alt=""
           draggable="false"
-        width="159" height="159" loading="lazy" decoding="async">
+        width="159" height="159" decoding="async">
       </div>
 
       <main class="about-main">
@@ -153,8 +153,12 @@
           <img
             class="about-mark-image"
             data-about-logo
-            src="./assets/images/logo_black.svg"
+            src="./assets/images/logo_black.webp"
             alt="교 로고"
+            width="920"
+            height="518"
+            fetchpriority="high"
+            decoding="async"
             draggable="false"
           />
         </section>
@@ -541,7 +545,7 @@
                   <li><img src="./assets/images/skill14.webp" alt="KeyShot" draggable="false" width="181" height="181" loading="lazy" decoding="async"></li>
                   <li><img src="./assets/images/skill13.webp" alt="Rhino" draggable="false" width="181" height="181" loading="lazy" decoding="async"></li>
                   <li><img src="./assets/images/skill15.webp" alt="Fusion 360" draggable="false" width="181" height="181" loading="lazy" decoding="async"></li>
-                  <li><img src="./assets/images/22.webp" alt="Capcut" draggable="false" width="727" height="727" loading="lazy" decoding="async"></li>
+                  <li><img src="./assets/images/22.webp" alt="Capcut" draggable="false" width="364" height="364" loading="lazy" decoding="async"></li>
                 </ul>
               </article>
 
@@ -595,7 +599,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.2.3/dist/lenis.min.js"></script>
     <script src="js/smooth-scroll.js?v=1"></script>
-    <script src="./js/hero.js?v=header3"></script>
+    <script src="./js/hero.js?v=header4"></script>
     <script src="./js/contact-modal.js"></script>
     <script src="./js/about-page.js?v=reveal7"></script>
     <script src="./js/about-intro.js?v=5"></script>

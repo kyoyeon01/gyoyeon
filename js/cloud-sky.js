@@ -15,6 +15,7 @@ precision mediump float;
 uniform vec2 uRes;
 uniform float uNearX, uFarX, uCirrusX;
 uniform float uCoverage, uSize, uSoftness, uShadow, uCirrus;
+uniform float uTime;
 uniform vec3 uZenith, uHorizon, uCloud;
 uniform vec4 uGlow;
 uniform vec2 uSun;
@@ -114,13 +115,13 @@ void main(){
   vec3 col = sky;
 
   if (uCirrus > 0.0) {
-    vec2 cuv = vec2(p.x * 1.4 + uCirrusX, p.y * 5.5);
+    vec2 cuv = vec2(p.x * 1.4 + uCirrusX, p.y * 5.5 + sin(uTime * 0.82) * 0.035);
     float veil = fbm(cuv) * fbm(cuv * 2.3 + 9.0);
     veil = smoothstep(0.24, 0.55, veil) * smoothstep(0.15, 0.7, p.y);
     col = mix(col, uCloud, veil * uCirrus * 0.5);
   }
 
-  vec2 fuv = vec2(p.x + uFarX, p.y) * 2.15 + uParallax * 0.4;
+  vec2 fuv = vec2(p.x + uFarX, p.y + sin(uTime * 0.95 + 0.4) * 0.007) * 2.15 + uParallax * 0.4;
   vec2 fd = cloudField(fuv, 17.0, 11.0);
   float fa = clamp(fd.x * uSoftness, 0.0, 1.0);
   if (fa > 0.0) {
@@ -128,7 +129,7 @@ void main(){
     col = mix(col, mix(lit, sky, 0.55), fa);
   }
 
-  vec2 nuv = vec2(p.x + uNearX, p.y) * 1.05 + uParallax;
+  vec2 nuv = vec2(p.x + uNearX, p.y + sin(uTime * 0.72 + 1.7) * 0.01) * 1.05 + uParallax;
   vec2 nd = cloudField(nuv, 3.0, 8.5);
   float na = clamp(nd.x * uSoftness, 0.0, 1.0);
   if (na > 0.0) {
@@ -260,13 +261,19 @@ function initCloudSky() {
   let raf = 0;
   let inView = true;
 
+  let startTime = 0;
+
   const resize = () => {
     const rect = hero.getBoundingClientRect();
     width = Math.max(1, rect.width);
     height = Math.max(1, rect.height);
   };
 
+  const hasValidSize = () => width >= 64 && height >= 64;
+
   const draw = (now) => {
+    if (!hasValidSize()) return;
+
     const dt = Math.min(0.05, (now - last) / 1000);
     last = now;
     const damping = 50;
@@ -291,6 +298,8 @@ function initCloudSky() {
       canvas.height = bufferHeight;
     }
 
+    const elapsed = reducedMotion ? 0 : (now - startTime) / 1000;
+
     gl.viewport(0, 0, bufferWidth, bufferHeight);
     gl.uniform2f(uniform("uRes"), bufferWidth, bufferHeight);
     gl.uniform1f(uniform("uNearX"), nearX);
@@ -301,6 +310,7 @@ function initCloudSky() {
     gl.uniform1f(uniform("uSoftness"), 2.25);
     gl.uniform1f(uniform("uShadow"), 0.7);
     gl.uniform1f(uniform("uCirrus"), 1);
+    gl.uniform1f(uniform("uTime"), elapsed);
     gl.uniform2f(uniform("uSun"), 1, 1);
     gl.uniform2f(uniform("uParallax"), -leanX * 0.21, -leanY * 0.15);
     gl.uniform3f(uniform("uZenith"), zenith[0], zenith[1], zenith[2]);
@@ -308,6 +318,10 @@ function initCloudSky() {
     gl.uniform3f(uniform("uCloud"), cloud[0], cloud[1], cloud[2]);
     gl.uniform4f(uniform("uGlow"), glow[0], glow[1], glow[2], glow[3]);
     gl.drawArrays(gl.TRIANGLES, 0, 3);
+
+    if (!canvas.classList.contains("is-ready")) {
+      canvas.classList.add("is-ready");
+    }
   };
 
   const render = (now) => {
@@ -358,6 +372,8 @@ function initCloudSky() {
   });
 
   resize();
+  startTime = performance.now();
+  last = startTime;
   resizeObserver.observe(hero);
   viewObserver.observe(hero);
   hero.addEventListener("pointermove", trackPointer, { passive: true });
@@ -365,7 +381,7 @@ function initCloudSky() {
   hero.addEventListener("pointerleave", leavePointer);
   document.addEventListener("visibilitychange", handleVisibility);
 
-  draw(performance.now());
+  draw(startTime);
   start();
 
   window.addEventListener(

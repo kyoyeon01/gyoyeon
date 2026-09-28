@@ -206,18 +206,27 @@ function initGalleryHover(section, shiftLayer) {
 
   let lastX = null;
   let lastY = null;
+  let hoverRaf = 0;
 
   section.addEventListener("pointermove", (event) => {
     if (event.pointerType && event.pointerType !== "mouse") return;
-    if (lastX === event.clientX && lastY === event.clientY) return;
     lastX = event.clientX;
     lastY = event.clientY;
-    syncHover(event.clientX, event.clientY);
+    if (hoverRaf) return;
+    hoverRaf = requestAnimationFrame(() => {
+      hoverRaf = 0;
+      if (lastX == null) return;
+      syncHover(lastX, lastY);
+    });
   });
 
   section.addEventListener("pointerleave", () => {
     lastX = null;
     lastY = null;
+    if (hoverRaf) {
+      cancelAnimationFrame(hoverRaf);
+      hoverRaf = 0;
+    }
     if (!active) return;
     active = null;
     reset();

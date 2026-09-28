@@ -14,10 +14,43 @@ function initHeroParallax(section) {
 
   const layers = Array.from(section.querySelectorAll("[data-depth]"));
   let raf = 0;
+  let inView = true;
   let currentX = 0;
   let currentY = 0;
   let targetX = 0;
   let targetY = 0;
+
+  const apply = () => {
+    for (const layer of layers) {
+      const depth = Number(layer.dataset.depth) || 0;
+      const x = currentX * depth * RANGE_PX;
+      const y = currentY * depth * RANGE_PX;
+      layer.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+    }
+  };
+
+  const settled = () =>
+    Math.abs(targetX - currentX) < 0.001 &&
+    Math.abs(targetY - currentY) < 0.001 &&
+    Math.abs(currentX) < 0.001 &&
+    Math.abs(currentY) < 0.001;
+
+  const tick = () => {
+    currentX += (targetX - currentX) * DAMPING;
+    currentY += (targetY - currentY) * DAMPING;
+    apply();
+
+    if (inView && !settled()) {
+      raf = requestAnimationFrame(tick);
+    } else {
+      raf = 0;
+    }
+  };
+
+  const start = () => {
+    if (!inView || raf) return;
+    raf = requestAnimationFrame(tick);
+  };
 
   const onMove = (event) => {
     const rect = section.getBoundingClientRect();
@@ -25,35 +58,33 @@ function initHeroParallax(section) {
     const ny = ((event.clientY - rect.top) / rect.height) * 2 - 1;
     targetX = Math.max(-1, Math.min(1, nx));
     targetY = Math.max(-1, Math.min(1, ny));
+    start();
   };
 
   const onLeave = () => {
     targetX = 0;
     targetY = 0;
+    start();
   };
 
-  const tick = () => {
-    currentX += (targetX - currentX) * DAMPING;
-    currentY += (targetY - currentY) * DAMPING;
-
-    for (const layer of layers) {
-      const depth = Number(layer.dataset.depth) || 0;
-      const x = currentX * depth * RANGE_PX;
-      const y = currentY * depth * RANGE_PX;
-      layer.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+  const viewObserver = new IntersectionObserver(([entry]) => {
+    inView = entry.isIntersecting;
+    if (inView) start();
+    else if (raf) {
+      cancelAnimationFrame(raf);
+      raf = 0;
     }
-
-    raf = requestAnimationFrame(tick);
-  };
+  });
 
   section.addEventListener("mousemove", onMove);
   section.addEventListener("mouseleave", onLeave);
-  raf = requestAnimationFrame(tick);
+  viewObserver.observe(section);
 
   window.addEventListener(
     "pagehide",
     () => {
       cancelAnimationFrame(raf);
+      viewObserver.disconnect();
       section.removeEventListener("mousemove", onMove);
       section.removeEventListener("mouseleave", onLeave);
     },

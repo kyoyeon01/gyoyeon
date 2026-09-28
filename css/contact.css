@@ -47,8 +47,11 @@
   position: relative;
   z-index: 1;
   display: block;
-  flex: 0 0 auto;
+  flex: 0 0 min(26vw, 420px);
+  box-sizing: border-box;
   width: min(26vw, 420px);
+  max-width: min(26vw, 420px);
+  min-width: 0;
   cursor: pointer;
   transform: rotate(var(--tilt, 0deg));
   transform-origin: center center;
@@ -66,7 +69,9 @@
 .contact-flyer img {
   display: block;
   width: 100%;
+  max-width: 100%;
   height: auto;
+  object-fit: contain;
   user-select: none;
   pointer-events: none;
   -webkit-user-drag: none;
@@ -95,7 +100,9 @@
   }
 
   .contact-flyer {
+    flex-basis: min(28vw, 320px);
     width: min(28vw, 320px);
+    max-width: min(28vw, 320px);
   }
 }
 
@@ -116,7 +123,9 @@
   }
 
   .contact-flyer {
+    flex-basis: min(28vw, 150px);
     width: min(28vw, 150px);
+    max-width: min(28vw, 150px);
     transform: rotate(calc(var(--tilt, 0deg) * 0.45));
   }
 }

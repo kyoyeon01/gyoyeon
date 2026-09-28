@@ -8,14 +8,14 @@
       rel="stylesheet"
       as="style"
       crossorigin
-      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css"
     />
     <link rel="stylesheet" href="./css/base.css?v=leads1" />
-    <link rel="stylesheet" href="./css/hero.css?v=cloud-header2" />
+    <link rel="stylesheet" href="./css/hero.css?v=cloud-ready1" />
     <link rel="stylesheet" href="./css/about.css?v=webp1" />
     <link rel="stylesheet" href="./css/skills.css?v=notitle" />
     <link rel="stylesheet" href="./css/gallery.css?v=hover-fit1" />
-    <link rel="stylesheet" href="./css/contact.css?v=sr1" />
+    <link rel="stylesheet" href="./css/contact.css?v=restore1" />
     <link rel="stylesheet" href="./css/footer.css?v=layout2" />
     <link rel="stylesheet" href="./css/contact-modal.css" />
   </head>
@@ -26,7 +26,7 @@
         <canvas class="cloud-sky" data-cloud-sky aria-hidden="true"></canvas>
         <header class="hero-header">
           <a class="hero-logo" href="#hero" aria-label="홈">
-            <img src="./assets/images/logo_black.svg" alt="" />
+            <img src="./assets/images/logo_black.webp" alt="" />
           </a>
 
           <nav class="hero-nav" aria-label="주요 메뉴">
@@ -127,7 +127,8 @@
                 alt="2026 이교연 포트폴리오"
                 width="832"
                 height="1024"
-                fetchpriority="high"
+                loading="lazy"
+                decoding="async"
                 draggable="false"
               />
             </div>
@@ -139,13 +140,13 @@
           <div class="page book__page" style="--page-index: 2">
             <div class="page__half page__half--front">
               <div class="page-content">
-                <img src="./assets/images/1.webp" alt="" draggable="false" width="768" height="1024">
+                <img src="./assets/images/1.webp" alt="" draggable="false" width="768" height="1024" loading="lazy" decoding="async">
               </div>
               <span class="page__number">1</span>
             </div>
             <div class="page__half page__half--back">
               <div class="page-content">
-                <img src="./assets/images/2.webp" alt="" draggable="false" width="768" height="1024">
+                <img src="./assets/images/2.webp" alt="" draggable="false" width="768" height="1024" loading="lazy" decoding="async">
               </div>
               <span class="page__number">2</span>
             </div>
@@ -154,13 +155,13 @@
           <div class="page book__page" style="--page-index: 3">
             <div class="page__half page__half--front">
               <div class="page-content">
-                <img src="./assets/images/3.webp" alt="" draggable="false" width="768" height="1024">
+                <img src="./assets/images/3.webp" alt="" draggable="false" width="768" height="1024" loading="lazy" decoding="async">
               </div>
               <span class="page__number">3</span>
             </div>
             <div class="page__half page__half--back">
               <div class="page-content">
-                <img src="./assets/images/4.webp" alt="" draggable="false" width="768" height="1024">
+                <img src="./assets/images/4.webp" alt="" draggable="false" width="768" height="1024" loading="lazy" decoding="async">
               </div>
               <span class="page__number">4</span>
             </div>
@@ -169,13 +170,13 @@
           <div class="page book__page" style="--page-index: 4">
             <div class="page__half page__half--front">
               <div class="page-content">
-                <img src="./assets/images/5.webp" alt="" draggable="false" width="768" height="1024">
+                <img src="./assets/images/5.webp" alt="" draggable="false" width="768" height="1024" loading="lazy" decoding="async">
               </div>
               <span class="page__number">5</span>
             </div>
             <div class="page__half page__half--back">
               <div class="page-content">
-                <img src="./assets/images/6.webp" alt="" draggable="false" width="768" height="1024">
+                <img src="./assets/images/6.webp" alt="" draggable="false" width="768" height="1024" loading="lazy" decoding="async">
               </div>
               <span class="page__number">6</span>
             </div>
@@ -184,13 +185,13 @@
           <div class="page book__page" style="--page-index: 5">
             <div class="page__half page__half--front">
               <div class="page-content">
-                <img src="./assets/images/7.webp" alt="" draggable="false" width="768" height="1024">
+                <img src="./assets/images/7.webp" alt="" draggable="false" width="768" height="1024" loading="lazy" decoding="async">
               </div>
               <span class="page__number">7</span>
             </div>
             <div class="page__half page__half--back">
               <div class="page-content">
-                <img src="./assets/images/8.webp" alt="" draggable="false" width="768" height="1024">
+                <img src="./assets/images/8.webp" alt="" draggable="false" width="768" height="1024" loading="lazy" decoding="async">
               </div>
               <span class="page__number">8</span>
             </div>
@@ -385,11 +386,11 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.2.3/dist/lenis.min.js"></script>
     <script src="./js/smooth-scroll.js?v=1"></script>
-    <script src="./js/cloud-sky.js?v=gl1"></script>
-    <script src="./js/hero.js?v=header3"></script>
+    <script src="./js/cloud-sky.js?v=gl2"></script>
+    <script src="./js/hero.js?v=header4"></script>
     <script src="./js/book.js?v=booksize1"></script>
-    <script src="./js/projects.js?v=orig2"></script>
-    <script src="./js/gallery.js?v=sr1"></script>
+    <script src="./js/projects.js?v=perf1"></script>
+    <script src="./js/gallery.js?v=perf1"></script>
     <script src="./js/contact.js?v=webp1"></script>
     <script src="./js/contact-modal.js"></script>
     <script src="./js/footer.js?v=layout1"></script>
