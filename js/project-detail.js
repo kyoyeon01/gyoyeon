@@ -69,6 +69,14 @@ const WEB_CTA_THEME = {
     "--cta-line-hover": "#187349",
     "--cta-soft": "#e5f6ee",
   },
+  pock: {
+    "--cta-fill": "#2753f7",
+    "--cta-fill-hover": "#1d42c9",
+    "--cta-on-fill": "#ffffff",
+    "--cta-line": "#2753f7",
+    "--cta-line-hover": "#1d42c9",
+    "--cta-soft": "#c1e0ea",
+  },
 };
 
 function applyWebCtaTheme(root, project) {

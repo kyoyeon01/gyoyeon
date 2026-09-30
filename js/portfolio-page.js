@@ -21,7 +21,8 @@ function initPortfolioPage() {
   let index = 0;
   let animating = false;
 
-  const itemsFor = () => PROJECTS.filter((item) => projectMatchesCategory(item, category));
+  const itemsFor = () =>
+    PROJECTS.filter((item) => projectMatchesCategory(item, category) && isProjectListed(item));
   const maxIndex = () => Math.max(0, itemsFor().length - pageSize());
 
   function createCard(item, order) {
@@ -29,10 +30,7 @@ function initPortfolioPage() {
     card.className = "works-card";
     card.href = getProjectHref(item);
 
-    if (!item.detailRoute) {
-      card.setAttribute("aria-disabled", "true");
-      card.addEventListener("click", (event) => event.preventDefault());
-    }
+    bindProjectCardNav(card, item);
 
     const thumb = document.createElement("div");
     thumb.className = "works-thumb";

@@ -8,10 +8,7 @@ function createGalleryCard(project, options = {}) {
     card.tabIndex = -1;
   }
 
-  if (!project.detailRoute) {
-    card.setAttribute("aria-disabled", "true");
-    card.addEventListener("click", (event) => event.preventDefault());
-  }
+  bindProjectCardNav(card, project);
 
   const titleEl = document.createElement("h3");
   titleEl.className = "gallery-card__title";
@@ -44,7 +41,7 @@ function createGalleryGroup(hidden) {
   group.className = "gallery-group";
   if (hidden) group.setAttribute("aria-hidden", "true");
 
-  for (const project of PROJECTS) {
+  for (const project of listedProjects()) {
     group.appendChild(createGalleryCard(project, { hidden }));
   }
 

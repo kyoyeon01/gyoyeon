@@ -121,4 +121,104 @@ function initContactModal() {
   overlay.addEventListener("click", () => setOpen(false));
 }
 
-document.addEventListener("DOMContentLoaded", initContactModal);
+const COMING_SOON_MESSAGE = "상세페이지 준비중입니다.";
+
+function buildComingSoonModal() {
+  const root = document.createElement("div");
+  root.className = "contact-modal";
+  root.hidden = true;
+  root.setAttribute("aria-hidden", "true");
+
+  root.innerHTML = `
+    <div class="contact-modal-overlay" data-coming-soon-overlay></div>
+    <div class="contact-modal-card" role="dialog" aria-modal="true" aria-labelledby="coming-soon-title" tabindex="-1">
+      <button class="contact-modal-close" type="button" data-coming-soon-close aria-label="닫기">
+        <span></span>
+        <span></span>
+      </button>
+      <h2 id="coming-soon-title">${COMING_SOON_MESSAGE}</h2>
+    </div>
+  `;
+
+  document.body.appendChild(root);
+  return root;
+}
+
+function initComingSoonModal() {
+  const root = buildComingSoonModal();
+  const overlay = root.querySelector("[data-coming-soon-overlay]");
+  const card = root.querySelector(".contact-modal-card");
+  const closeBtn = root.querySelector("[data-coming-soon-close]");
+  let open = false;
+  let animating = false;
+
+  function setOpen(next) {
+    if (animating || next === open) return;
+    open = next;
+    animating = true;
+
+    const reduced = prefersReducedMotion() || typeof gsap === "undefined";
+
+    if (next) {
+      root.hidden = false;
+      root.setAttribute("aria-hidden", "false");
+      document.body.classList.add("contact-modal-open");
+
+      if (reduced) {
+        overlay.style.opacity = "1";
+        card.style.opacity = "1";
+        card.style.transform = "none";
+        animating = false;
+        card.focus();
+        return;
+      }
+
+      gsap.set(overlay, { opacity: 0 });
+      gsap.set(card, { opacity: 0, y: 20, scale: 0.95 });
+      gsap
+        .timeline({
+          defaults: { ease: "power2.out" },
+          onComplete: () => {
+            animating = false;
+            card.focus();
+          },
+        })
+        .to(overlay, { opacity: 1, duration: 0.28 }, 0)
+        .to(card, { opacity: 1, y: 0, scale: 1, duration: 0.38 }, 0.04);
+      return;
+    }
+
+    const finishClose = () => {
+      root.hidden = true;
+      root.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("contact-modal-open");
+      animating = false;
+    };
+
+    if (reduced) {
+      finishClose();
+      return;
+    }
+
+    gsap
+      .timeline({
+        defaults: { ease: "power2.in" },
+        onComplete: finishClose,
+      })
+      .to(card, { opacity: 0, y: 20, scale: 0.95, duration: 0.22 }, 0)
+      .to(overlay, { opacity: 0, duration: 0.22 }, 0);
+  }
+
+  closeBtn.addEventListener("click", () => setOpen(false));
+  overlay.addEventListener("click", () => setOpen(false));
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") setOpen(false);
+  });
+
+  window.openComingSoonModal = () => setOpen(true);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  initContactModal();
+  initComingSoonModal();
+});

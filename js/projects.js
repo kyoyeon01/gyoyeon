@@ -48,6 +48,22 @@ const PROJECTS = [
     description: "",
   },
   {
+    title: "POCK",
+    category: "WEB",
+    thumbnail: "assets/images/projects/pock/포크_썸네일.webp?v=pock1",
+    detailRoute: "/portfolio/pock",
+    detailContained: true,
+    accent: "#2753F7",
+    webUrl: "https://pock.dothome.co.kr/",
+    figmaUrl: "https://www.figma.com/design/TANXjVXeIkdekbqperTrUu/%ED%8C%80%ED%94%8C---POCK?node-id=276-19862&t=WiiINb0ZY7PWeEvR-1",
+    detailImages: [
+      "assets/images/projects/pock/메인_포크.webp?v=pock1",
+      "assets/images/projects/pock/브랜드 설명_포크.webp?v=pock1",
+      "assets/images/projects/pock/완성_포크.webp?v=pock1",
+    ],
+    description: "디지털 타임캡슐 메시지 서비스",
+  },
+  {
     title: "PAWONG",
     category: "PRODUCT",
     thumbnail: "assets/images/projects/pawong.webp?v=perf1",
@@ -129,6 +145,7 @@ const PROJECTS = [
     detailRoute: "",
     detailImages: [],
     description: "",
+    showInPortfolio: false,
   },
   {
     title: "NOT YET",
@@ -137,6 +154,7 @@ const PROJECTS = [
     detailRoute: "",
     detailImages: [],
     description: "",
+    showInPortfolio: false,
   },
   {
     title: "MEDIPOP",
@@ -171,18 +189,29 @@ const PROJECTS = [
     description: "옹진군을 모티브로 제작한 캐릭터 디자인 및 응용 그래픽 프로젝트",
   },
   {
-    title: "NOT YET",
+    title: "동구밭X미피",
     category: "GRAPHIC",
-    thumbnail: "",
+    thumbnail: "assets/images/projects/graphic/동구밭_썸네일.webp?v=graphic1",
     detailRoute: "",
+    detailStatus: "coming-soon",
     detailImages: [],
     description: "",
   },
   {
-    title: "NOT YET",
+    title: "I LUV CASE",
     category: "GRAPHIC",
-    thumbnail: "",
+    thumbnail: "assets/images/projects/graphic/I LUV CASE.webp?v=graphic1",
     detailRoute: "",
+    detailStatus: "coming-soon",
+    detailImages: [],
+    description: "",
+  },
+  {
+    title: "SH CASE",
+    category: "GRAPHIC",
+    thumbnail: "assets/images/projects/graphic/SH CASE.webp?v=graphic1",
+    detailRoute: "",
+    detailStatus: "coming-soon",
     detailImages: [],
     description: "",
   },
@@ -251,7 +280,14 @@ const PROJECT_IMAGE_SIZE = {
   "assets/images/projects/rescue-x/dr7.webp": [2560, 1440],
   "assets/images/projects/rescue-x/dr8.webp": [2560, 1440],
   "assets/images/projects/rescue-x/dr9.webp": [2560, 1440],
-  "assets/images/projects/rescue-x/dr_썸네일.webp": [1755, 2052]
+  "assets/images/projects/rescue-x/dr_썸네일.webp": [1755, 2052],
+  "assets/images/projects/pock/포크_썸네일.webp": [2340, 2736],
+  "assets/images/projects/pock/메인_포크.webp": [7680, 4320],
+  "assets/images/projects/pock/브랜드 설명_포크.webp": [7680, 4320],
+  "assets/images/projects/pock/완성_포크.webp": [7680, 4320],
+  "assets/images/projects/graphic/동구밭_썸네일.webp": [2340, 2736],
+  "assets/images/projects/graphic/I LUV CASE.webp": [2340, 2736],
+  "assets/images/projects/graphic/SH CASE.webp": [2340, 2736]
 };
 
 const PROJECT_THUMB_SIZES =
@@ -350,4 +386,35 @@ function getProjectBySlug(slug) {
 
 function projectMatchesCategory(project, category) {
   return project.category === category;
+}
+
+function isProjectListed(project) {
+  return project.showInPortfolio !== false;
+}
+
+function listedProjects() {
+  return PROJECTS.filter(isProjectListed);
+}
+
+function isComingSoonProject(project) {
+  return project.detailStatus === "coming-soon";
+}
+
+function bindProjectCardNav(card, project) {
+  if (isComingSoonProject(project)) {
+    card.href = "#";
+    card.setAttribute("aria-haspopup", "dialog");
+    card.addEventListener("click", (event) => {
+      event.preventDefault();
+      if (typeof window.openComingSoonModal === "function") {
+        window.openComingSoonModal();
+      }
+    });
+    return;
+  }
+
+  if (!project.detailRoute) {
+    card.setAttribute("aria-disabled", "true");
+    card.addEventListener("click", (event) => event.preventDefault());
+  }
 }
