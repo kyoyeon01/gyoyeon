@@ -215,6 +215,42 @@ const PROJECTS = [
     detailImages: [],
     description: "",
   },
+  {
+    title: "HOME SWEET",
+    category: "GRAPHIC",
+    thumbnail: "assets/images/projects/graphic/HOME SWEET.webp?v=graphic2",
+    detailRoute: "",
+    detailStatus: "coming-soon",
+    detailImages: [],
+    description: "",
+  },
+  {
+    title: "Drawstring Bag",
+    category: "GRAPHIC",
+    thumbnail: "assets/images/projects/graphic/Drawstring Bag.webp?v=graphic2",
+    detailRoute: "",
+    detailStatus: "coming-soon",
+    detailImages: [],
+    description: "",
+  },
+  {
+    title: "PAWONG",
+    category: "GRAPHIC",
+    thumbnail: "assets/images/projects/graphic/PAWONG.webp?v=graphic2",
+    detailRoute: "",
+    detailStatus: "coming-soon",
+    detailImages: [],
+    description: "",
+  },
+  {
+    title: "HOMERUN",
+    category: "GRAPHIC",
+    thumbnail: "assets/images/projects/graphic/HOMERUN.webp?v=graphic2",
+    detailRoute: "",
+    detailStatus: "coming-soon",
+    detailImages: [],
+    description: "",
+  },
 ];
 
 const PROJECT_IMAGE_SIZE = {
@@ -287,7 +323,11 @@ const PROJECT_IMAGE_SIZE = {
   "assets/images/projects/pock/완성_포크.webp": [7680, 4320],
   "assets/images/projects/graphic/동구밭_썸네일.webp": [2340, 2736],
   "assets/images/projects/graphic/I LUV CASE.webp": [2340, 2736],
-  "assets/images/projects/graphic/SH CASE.webp": [2340, 2736]
+  "assets/images/projects/graphic/SH CASE.webp": [2340, 2736],
+  "assets/images/projects/graphic/HOME SWEET.webp": [2340, 2736],
+  "assets/images/projects/graphic/Drawstring Bag.webp": [2340, 2736],
+  "assets/images/projects/graphic/PAWONG.webp": [2340, 2736],
+  "assets/images/projects/graphic/HOMERUN.webp": [2340, 2736]
 };
 
 const PROJECT_THUMB_SIZES =

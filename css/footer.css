@@ -105,10 +105,6 @@
   object-fit: contain;
 }
 
-.footer-social[aria-label="Behance"] {
-  width: 40px;
-}
-
 @media (hover: hover) and (pointer: fine) {
   .footer-social:hover {
     opacity: 1;

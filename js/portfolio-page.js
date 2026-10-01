@@ -11,19 +11,24 @@ function pageSize() {
 }
 
 function initPortfolioPage() {
+  const works = document.querySelector(".works");
   const track = document.querySelector("[data-works-track]");
   const tabs = Array.from(document.querySelectorAll("[data-works-tab]"));
   const prev = document.querySelector("[data-works-prev]");
   const next = document.querySelector("[data-works-next]");
+  const nav = document.querySelector(".works-nav");
   if (!track || !tabs.length || !prev || !next) return;
 
-  let category = "WEB";
+  let category = "ALL";
   let index = 0;
   let animating = false;
 
+  const isAll = () => category === "ALL";
   const itemsFor = () =>
-    PROJECTS.filter((item) => projectMatchesCategory(item, category) && isProjectListed(item));
-  const maxIndex = () => Math.max(0, itemsFor().length - pageSize());
+    isAll()
+      ? listedProjects()
+      : PROJECTS.filter((item) => projectMatchesCategory(item, category) && isProjectListed(item));
+  const maxIndex = () => (isAll() ? 0 : Math.max(0, itemsFor().length - pageSize()));
 
   function createCard(item, order) {
     const card = document.createElement("a");
@@ -66,12 +71,21 @@ function initPortfolioPage() {
   }
 
   function updateArrows() {
-    const max = maxIndex();
-    prev.disabled = index <= 0;
-    next.disabled = index >= max;
+    const all = isAll();
+    if (nav) nav.hidden = all;
+    prev.disabled = all || index <= 0;
+    next.disabled = all || index >= maxIndex();
+    prev.setAttribute("aria-hidden", String(all));
+    next.setAttribute("aria-hidden", String(all));
   }
 
   function applyOffset(immediate) {
+    if (isAll()) {
+      if (typeof gsap !== "undefined") gsap.set(track, { x: 0 });
+      else track.style.transform = "translate3d(0, 0, 0)";
+      return;
+    }
+
     const first = track.querySelector(".works-card");
     const x = (() => {
       if (!first) return 0;
@@ -112,6 +126,8 @@ function initPortfolioPage() {
     if (animating) return;
     category = nextCategory;
     index = 0;
+
+    if (works) works.classList.toggle("is-all", isAll());
 
     tabs.forEach((tab) => {
       const active = tab.dataset.worksTab === category;
@@ -154,20 +170,24 @@ function initPortfolioPage() {
   });
 
   prev.addEventListener("click", () => {
-    if (index <= 0) return;
+    if (isAll() || index <= 0) return;
     index -= 1;
     updateArrows();
     applyOffset(false);
   });
 
   next.addEventListener("click", () => {
-    if (index >= maxIndex()) return;
+    if (isAll() || index >= maxIndex()) return;
     index += 1;
     updateArrows();
     applyOffset(false);
   });
 
   window.addEventListener("resize", () => {
+    if (isAll()) {
+      updateArrows();
+      return;
+    }
     index = Math.min(index, maxIndex());
     updateArrows();
     applyOffset(true);
@@ -179,7 +199,7 @@ function initPortfolioPage() {
   const requested = new URLSearchParams(location.search).get("tab");
   const initial = requested && tabs.some((tab) => tab.dataset.worksTab === requested.toUpperCase())
     ? requested.toUpperCase()
-    : "WEB";
+    : "ALL";
   showCategory(initial, { animate: false });
 }
 

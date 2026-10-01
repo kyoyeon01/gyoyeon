@@ -9,11 +9,6 @@ const footerSocials = [
     image: "icon_github.svg",
     url: "#",
   },
-  {
-    name: "Behance",
-    image: "icon_behance.svg",
-    url: "#",
-  },
 ];
 
 function initFooter() {
