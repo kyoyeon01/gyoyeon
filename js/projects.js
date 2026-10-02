@@ -244,9 +244,14 @@ const PROJECTS = [
     title: "Drawstring Bag",
     category: "GRAPHIC",
     thumbnail: "assets/images/projects/graphic/Drawstring Bag.webp?v=graphic2",
-    detailRoute: "",
-    detailStatus: "coming-soon",
-    detailImages: [],
+    detailRoute: "/portfolio/drawstring-bag",
+    detailContained: true,
+    detailImages: [
+      "assets/images/projects/drawstring-bag/Drawstring Bag 1.webp?v=bag1",
+      "assets/images/projects/drawstring-bag/Drawstring Bag 2.webp?v=bag1",
+      "assets/images/projects/drawstring-bag/Drawstring Bag 3.webp?v=bag1",
+      "assets/images/projects/drawstring-bag/Drawstring Bag 4.webp?v=bag1",
+    ],
     description: "",
   },
   {
@@ -355,6 +360,10 @@ const PROJECT_IMAGE_SIZE = {
   "assets/images/projects/sh-case/SH CASE 3.webp": [7680, 4320],
   "assets/images/projects/graphic/HOME SWEET.webp": [2340, 2736],
   "assets/images/projects/graphic/Drawstring Bag.webp": [2340, 2736],
+  "assets/images/projects/drawstring-bag/Drawstring Bag 1.webp": [7680, 4320],
+  "assets/images/projects/drawstring-bag/Drawstring Bag 2.webp": [7680, 4320],
+  "assets/images/projects/drawstring-bag/Drawstring Bag 3.webp": [7680, 4320],
+  "assets/images/projects/drawstring-bag/Drawstring Bag 4.webp": [7680, 4320],
   "assets/images/projects/graphic/PAWONG.webp": [2340, 2736],
   "assets/images/projects/graphic/HOMERUN.webp": [2340, 2736]
 };
