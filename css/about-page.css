@@ -733,10 +733,6 @@
     width: 220px;
   }
 
-  .profile-history {
-    width: 100%;
-  }
-
   .profile-photo {
     width: 200px;
   }
@@ -807,14 +803,6 @@
 
   .profile-left {
     width: 100%;
-  }
-
-  .profile-history {
-    width: 100%;
-  }
-
-  .profile-photo {
-    width: 200px;
   }
 
   .profile-education {

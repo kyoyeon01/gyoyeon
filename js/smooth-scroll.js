@@ -74,8 +74,6 @@ function initSmoothScroll() {
       };
       requestAnimationFrame(loop);
     }
-
-    window.__lenis = lenis;
   };
 
   const stop = () => {
@@ -93,8 +91,6 @@ function initSmoothScroll() {
       lenis.destroy();
       lenis = null;
     }
-
-    window.__lenis = null;
   };
 
   if (!prefersReducedMotion()) start();

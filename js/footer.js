@@ -2,12 +2,12 @@ const footerSocials = [
   {
     name: "Notion",
     image: "icon_notion.svg",
-    url: "#",
+    url: "https://app.notion.com/p/2021-5d9d2bc885bb42379a82197e64d5eafb?source=copy_link",
   },
   {
     name: "GitHub",
     image: "icon_github.svg",
-    url: "#",
+    url: "https://github.com/kyoyeon01",
   },
 ];
 
@@ -23,11 +23,9 @@ function initFooter() {
     const link = document.createElement("a");
     link.className = "footer-social";
     link.href = item.url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
     link.setAttribute("aria-label", item.name);
-
-    if (item.url === "#") {
-      link.addEventListener("click", (event) => event.preventDefault());
-    }
 
     const img = document.createElement("img");
     img.src = new URL(item.image, assetBase).href;

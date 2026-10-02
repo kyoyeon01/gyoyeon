@@ -80,12 +80,6 @@
   padding-top: 60px;
 }
 
-@media (max-width: 1199px) {
-  .project-detail.is-deepseaker.is-contained .project-images {
-    padding-top: 60px;
-  }
-}
-
 @media (max-width: 767px) {
   .project-detail.is-deepseaker.is-contained .project-images {
     padding-top: 32px;
