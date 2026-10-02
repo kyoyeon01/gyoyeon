@@ -273,9 +273,14 @@ const PROJECTS = [
     title: "HOMERUN",
     category: "GRAPHIC",
     thumbnail: "assets/images/projects/graphic/HOMERUN.webp?v=graphic2",
-    detailRoute: "",
-    detailStatus: "coming-soon",
-    detailImages: [],
+    detailRoute: "/portfolio/homerun",
+    detailContained: true,
+    detailImages: [
+      "assets/images/projects/homerun/HOMERUN 1.webp?v=hr1",
+      "assets/images/projects/homerun/HOMERUN 2.webp?v=hr1",
+      "assets/images/projects/homerun/HOMERUN 3.webp?v=hr1",
+      "assets/images/projects/homerun/HOMERUN 4.webp?v=hr1",
+    ],
     description: "",
   },
 ];
@@ -376,7 +381,11 @@ const PROJECT_IMAGE_SIZE = {
   "assets/images/projects/drawstring-bag/Drawstring Bag 3.webp": [7680, 4320],
   "assets/images/projects/drawstring-bag/Drawstring Bag 4.webp": [7680, 4320],
   "assets/images/projects/graphic/PAWONG.webp": [2340, 2736],
-  "assets/images/projects/graphic/HOMERUN.webp": [2340, 2736]
+  "assets/images/projects/graphic/HOMERUN.webp": [2340, 2736],
+  "assets/images/projects/homerun/HOMERUN 1.webp": [7680, 4320],
+  "assets/images/projects/homerun/HOMERUN 2.webp": [7680, 4320],
+  "assets/images/projects/homerun/HOMERUN 3.webp": [7680, 4320],
+  "assets/images/projects/homerun/HOMERUN 4.webp": [7680, 4320]
 };
 
 const PROJECT_THUMB_SIZES =
